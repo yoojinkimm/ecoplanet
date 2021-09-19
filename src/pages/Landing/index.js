@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./index.css";
 import { Route, Link, useHistory } from "react-router-dom";
 
-export const Home = () => {
+export const Landing = () => {
   const history = useHistory();
   const [mouseX, setMouseX] = useState(window.innerWidth / 2);
   const [mouseY, setMouseY] = useState(window.innerHeight / 2);
@@ -19,39 +19,35 @@ export const Home = () => {
   };
 
   return (
-    <div className="home-background" onMouseMove={_onMouseMove}>
-      <div className="home-fixed-back" />
+    <div className="landing-background" onMouseMove={_onMouseMove}>
+      <div className="landing-fixed-back" />
       {/* header */}
-      <div className="home-header-container">
+      <div className="landing-header-container">
         <div className="home-header-inner">
           <nav>
-            <a class="home-header-logo" href="/">
+            <a className="landing-header-logo" href="/">
               ECO planet
             </a>
           </nav>
-          <nav className="home-left-menu">
-            <span>All Data</span>
-          </nav>
-          {/* <nav className="home-right-menu">
-            <span>Menu</span>
-          </nav> */}
         </div>
       </div>
 
       {/* main contents */}
       <main>
         <section>
-          <div className="home-image-container"></div>
+          <div className="landing-contents-container">
+            <a className="landing-button-text" href="/home">
+              Do not Click me
+            </a>
+          </div>
         </section>
       </main>
 
-      <span style={{ color: "white", marginTop: 400 }}>Home</span>
-
       {/* mouse effect */}
-      <div
-        className="home-mouse-effect"
+      {/* <div
+        className="landing-mouse-effect"
         style={{ top: mouseY + 10, left: mouseX - 50 }}
-      />
+      /> */}
     </div>
   );
 };
