@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./index.css";
 import { Route, Link, useHistory } from "react-router-dom";
 
+import image1 from "../../assets/images/melting.jpg";
+import image2 from "../../assets/images/flower.jpg";
+import image3 from "../../assets/images/cat.jpg";
+import image4 from "../../assets/images/sea.jpg";
+
 export const Home = () => {
   const history = useHistory();
   const [mouseX, setMouseX] = useState(window.innerWidth / 2);
@@ -41,17 +46,36 @@ export const Home = () => {
       {/* main contents */}
       <main>
         <section>
-          <div className="home-image-container"></div>
+          <div className="home-image-container">
+            <div
+              className="home-move-image"
+              style={{ left: "3%", animationDelay: "1s" }}
+            >
+              <img className="home-illust" src={image1} />
+            </div>
+            <div className="home-move-image" style={{ left: "11%" }}>
+              <img className="home-illust" src={image2} />
+            </div>
+            <div
+              className="home-move-image"
+              style={{ left: "55%", animationDelay: "3s" }}
+            >
+              <img className="home-illust" src={image3} />
+            </div>
+            <div
+              className="home-move-image"
+              style={{ left: "77%", animationDelay: "5s" }}
+            >
+              <img className="home-illust" src={image4} />
+            </div>
+          </div>
         </section>
       </main>
-
-      <span style={{ color: "white", marginTop: 400 }}>Home</span>
-
       {/* mouse effect */}
-      <div
+      {/* <div
         className="home-mouse-effect"
         style={{ top: mouseY + 10, left: mouseX - 50 }}
-      />
+      /> */}
     </div>
   );
 };
