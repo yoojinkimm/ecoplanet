@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./index.css";
 import { Route, Link, useHistory } from "react-router-dom";
 
+import IconBasket from "../../assets/icons/icon_basket.png";
+
 export const Landing = () => {
   const history = useHistory();
   const [mouseX, setMouseX] = useState(window.innerWidth / 2);
@@ -22,22 +24,21 @@ export const Landing = () => {
     <div className="landing-background" onMouseMove={_onMouseMove}>
       <div className="landing-fixed-back" />
       {/* header */}
-      <div className="landing-header-container">
-        <div className="home-header-inner">
-          <nav>
-            <a className="landing-header-logo" href="/">
-              ECO planet
-            </a>
-          </nav>
-        </div>
+      <div className="header-container">
+        <nav>
+          <a className="header-logo fc-primary pointer" href="/">
+            ECO PLANET
+          </a>
+        </nav>
       </div>
 
       {/* main contents */}
       <main>
         <section>
-          <div className="landing-contents-container">
-            <a className="landing-button-text" href="/home">
-              Do not Click me
+          <div className="landing-contents-container ">
+            <a className="landing-button-text pointer" href="/home">
+              <img className="landing-icon" src={IconBasket} />
+              Let's go grocery shopping!
             </a>
           </div>
         </section>

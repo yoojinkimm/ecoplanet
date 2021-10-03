@@ -35,8 +35,135 @@ code {
     monospace;
 }
 
+.pointer {
+  cursor: pointer;
+}
+.act {
+  display: flex;
+  align-items: center;
+}
+.jct {
+  display: flex;
+  justify-content: center;
+}
+.col {
+  display: flex;
+  flex-direction: column;
+}
+.f-bold {
+  font-weight: 700;
+}
+.fc-white {
+  color: white;
+}
+.fc-primary {
+  color: rgb(148, 251, 86);
+}
+.fs-24 {
+  font-size: 24px;
+}
+
+main {
+  padding-top: calc(3.75rem + 1px);
+  min-height: calc(var(--vh, 1vh) * 100);
+  display: flex;
+  flex-direction: column;
+}
+
+section {
+  padding: 0;
+  width: 100%;
+  margin: calc(-3.75rem - 1px) 0 0;
+  height: calc(1vh * 100);
+  min-height: calc(1vh * 100);
+}
+
+.header-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(108, 190, 46);
+  background-color: rgba(0, 0, 0, 0.1);
+
+  padding: 0.5rem 1rem;
+  backdrop-filter: blur(7px) saturate(150%);
+}
+.header-inner {
+  flex-direction: column;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.header-right-menu {
+  right: 0;
+  position: absolute;
+}
+.header-logo {
+  display: block;
+  line-height: 1;
+  padding: 0.5rem;
+  letter-spacing: -0.05em;
+  font-size: 1.75rem;
+}
+
+.footer-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+
+  padding: 1rem 1rem;
+  backdrop-filter: blur(7px) saturate(150%);
+}
+.footer-inner {
+  flex-direction: column;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.footer-right-menu {
+  padding: 0.5rem 0.5rem;
+  border: 1px solid rgb(108, 190, 46);
+  right: 0;
+  position: absolute;
+}
+
+/* only PC */
 @media (min-width: 940px) {
   body {
     font-size: 16px;
+  }
+}
+
+/* only Tablet */
+@media (max-width: 939.98px) {
+  body {
+    font-size: 12px;
+  }
+}
+
+/* only Mobile */
+@media (max-width: 747.98px) {
+  body {
+    font-size: 8px;
+  }
+  .home-header-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .footer-container {
+    backdrop-filter: none;
+  }
+  .footer-right-menu {
+    backdrop-filter: blur(4px) saturate(150%);
   }
 }
