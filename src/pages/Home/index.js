@@ -3,12 +3,15 @@ import "./index.css";
 import { Route, Link, useHistory } from "react-router-dom";
 
 import IconBasket from "../../assets/icons/icon_basket.png";
-import 칠성사이다250 from "../../assets/images/칠성사이다250.png";
+
+import { productList } from "../../assets/data/product.js";
+import { CircularSelector } from "../../components";
 
 export const Home = () => {
   const history = useHistory();
   const [mouseX, setMouseX] = useState(window.innerWidth / 2);
   const [mouseY, setMouseY] = useState(window.innerHeight / 2);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   /* for mouse effect */
   const _onMouseMove = (e) => {
@@ -42,29 +45,20 @@ export const Home = () => {
         <section>
           <div className="home-contents-container">
             <div className="home-left-container act jct">
-              <div
-                className="home-product-select fc-white pointer"
-                style={{
-                  transform: "translate3d(0px, calc(100%),0px) rotate(70deg)",
-                }}
-              >
-                칠성사이다 250ml
-              </div>
-              <div
-                className="home-product-select fc-white pointer"
-                style={{
-                  transform: "translate3d(40px, calc(100%),0px) rotate(60deg)",
-                }}
-              >
-                칠성사이다 250ml
-              </div>
+              <CircularSelector
+                selectedIndex={selectedIndex}
+                setSelectedIndex={setSelectedIndex}
+              />
             </div>
             <div className="home-right-container act jct">
               <div className="home-product-container col act jct">
-                <img className="home-product-icon" src={칠성사이다250} />
+                <img
+                  className="home-product-icon"
+                  src={productList[selectedIndex].image}
+                />
                 <img className="home-basket-icon" src={IconBasket} />
                 <span className="home-product-name fc-white fs-24 f-bold">
-                  칠성사이다 250ml
+                  {productList[selectedIndex].name}
                 </span>
               </div>
             </div>

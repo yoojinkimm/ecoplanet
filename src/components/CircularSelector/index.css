@@ -1,0 +1,17 @@
+.circular-container {
+  position: absolute;
+  left: 0;
+}
+
+.home-product-select {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 0;
+  left: 0;
+  font-size: 3rem;
+  transition: opacity 0.25s ease-out;
+  transform-origin: 0 50%;
+  perspective: 1000px;
+  white-space: nowrap;
+}
