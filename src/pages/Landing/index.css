@@ -12,7 +12,7 @@
   left: 0;
   right: 0;
   height: 100vh;
-  background: linear-gradient(rgb(0, 0, 0), rgb(108, 190, 46), rgb(0, 0, 0));
+  background: rgb(0, 0, 0);
 }
 .landing-contents-container {
   width: 100%;
@@ -47,6 +47,9 @@
   align-items: center;
   display: flex;
   flex-direction: column;
+  mix-blend-mode: difference;
+
+  transition: transform 0.2s ease-out;
 }
 
 /* only PC */
@@ -56,6 +59,6 @@
     padding-right: 2rem;
   }
   .landing-button-text:hover {
-    opacity: 0.5;
+    transform: scale(1.2);
   }
 }

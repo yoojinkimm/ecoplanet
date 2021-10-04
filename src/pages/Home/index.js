@@ -44,13 +44,7 @@ export const Home = () => {
       <main>
         <section>
           <div className="home-contents-container">
-            <div className="home-left-container act jct">
-              <CircularSelector
-                selectedIndex={selectedIndex}
-                setSelectedIndex={setSelectedIndex}
-              />
-            </div>
-            <div className="home-right-container act jct">
+            <div className="home-top-container act jct">
               <div className="home-product-container col act jct">
                 <img
                   className="home-product-icon"
@@ -61,6 +55,18 @@ export const Home = () => {
                   {productList[selectedIndex].name}
                 </span>
               </div>
+            </div>
+            <div className="home-bottom-container">
+              <div style={{ marginLeft: "calc(45%" }} />
+              {productList.map((item, index) => {
+                return (
+                  <img
+                    className="home-product-select"
+                    src={productList[index].image}
+                  />
+                );
+              })}
+              <div style={{ marginRight: "calc(45%" }} />
             </div>
           </div>
         </section>

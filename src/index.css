@@ -87,7 +87,7 @@ section {
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-bottom-color: rgb(108, 190, 46);
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.4);
 
   padding: 0.5rem 1rem;
   backdrop-filter: blur(7px) saturate(150%);

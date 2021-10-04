@@ -13,7 +13,7 @@ export const CircularSelector = ({ selectedIndex, setSelectedIndex }) => {
       {productList.map((item, index) => {
         return (
           <div
-            className="home-product-select fc-white pointer"
+            className="circular-product-select fc-white pointer"
             onClick={() => setSelectedIndex(item.index)}
             style={{
               paddingLeft: r,
