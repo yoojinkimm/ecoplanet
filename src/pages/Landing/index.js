@@ -87,6 +87,8 @@ const Canvas = (props) => {
         // center of the map
         const cx = u - mapSize / 2;
         const cy = v - mapSize / 2;
+        // const cx = u - mouseX;
+        // const cy = v - mouseY;
 
         // distance from middle of map
         const d = distance(cx, cy);
@@ -116,6 +118,8 @@ const Canvas = (props) => {
         const i = u * mapSize + v;
         const cx = u - mapSize / 2;
         const cy = v - mapSize / 2;
+        // const cx = u - mouseX;
+        // const cy = v - mouseY;
 
         // skewed distance as input to chaos field calculation,
         // scaled for smoothness over map distance
@@ -174,6 +178,8 @@ const Canvas = (props) => {
 
   // adjust height maps offsets
   const moveHeightMaps = (t) => {
+    // console.log("time: ", t); // 1000 ~ 그 이상
+
     dx1 = Math.floor(
       (((Math.cos(t * 0.0002 + 0.4 + Math.PI) + 1) / 2) * mapSize) / 2
     );
@@ -182,9 +188,23 @@ const Canvas = (props) => {
     dy2 = Math.floor(
       (((Math.cos(t * -0.0003 - 0.8 + Math.PI) + 1) / 2) * mapSize) / 2
     );
+
+    // console.log("mouseX mouseY: ", mouseX, mouseY);
+
+    // dx1 = Math.floor(
+    //   (((Math.cos(mouseX * 0.2 + 0.4 + Math.PI) + 1) / 2) * mapSize) / 2
+    // );
+    // dy1 = Math.floor((((Math.cos(mouseY * 0.3 - 0.1) + 1) / 2) * mapSize) / 2);
+    // dx2 = Math.floor((((Math.cos(mouseX * -0.2 + 1.2) + 1) / 2) * mapSize) / 2);
+    // dy2 = Math.floor(
+    //   (((Math.cos(mouseY * -0.3 - 0.8 + Math.PI) + 1) / 2) * mapSize) / 2
+    // );
   };
 
   const tick = (time) => {
+    // mouseX = props.mouseX;
+    // mouseY = props.mouseY;
+
     moveHeightMaps(time);
     updateImageData();
 
@@ -247,17 +267,39 @@ const Canvas = (props) => {
     console.log("update changed ", update);
     if (image) {
       console.log("map changed");
+
       updateImageData();
       requestAnimationFrame(tick);
     }
   }, [update]);
 
-  useEffect(() => {});
+  // mouse interaction을 넣으려는 시도
+  //   useEffect(() => {
+  //     console.log("start");
+  //     canvasRef.current.addEventListener("mousemove", (e) =>
+  //       console.log(e.offsetX, e.offsetY)
+  //     );
+
+  //     return () => {
+  //       canvasRef.current.removeEventListener("mousemove", (e) =>
+  //         console.log(e.offsetX, e.offsetY)
+  //       );
+  //     };
+  //   }, []);
+
+  //   useEffect(() => {
+  //     mouseX = props.mouseX;
+  //     mouseY = props.mouseY;
+  //   }, [props.mouseX, props.mouseY]);
 
   return (
     <canvas
       ref={canvasRef}
-      style={{ width: "100%", height: "100%", padding: 0, margin: 0 }}
+      style={{
+        padding: 0,
+        margin: 0,
+        ...props.style,
+      }}
     ></canvas>
   );
 };
@@ -272,7 +314,6 @@ export const Landing = () => {
     // console.log(e.clientY, e.target.offsetTop);
     // setMouseX(e.clientX);
     // setMouseY(e.clientY);
-    //
     // setMouseX(e.clientX + e.target.offsetLeft);
     // if (e.clientY >= e.target.offsetTop) setMouseY(e.clientY);
     // else setMouseY(e.target.offsetTop);
@@ -281,7 +322,12 @@ export const Landing = () => {
   return (
     <div className="landing-background" onMouseMove={_onMouseMove}>
       <div className="landing-fixed-back">
-        <Canvas />
+        <Canvas
+          style={{
+            width: "100%",
+            height: "100%",
+          }}
+        />
       </div>
       {/* header */}
       <div className="header-container">
