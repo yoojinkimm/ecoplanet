@@ -274,18 +274,17 @@ const Canvas = (props) => {
   }, [update]);
 
   // mouse interaction을 넣으려는 시도
-  //   useEffect(() => {
-  //     console.log("start");
-  //     canvasRef.current.addEventListener("mousemove", (e) =>
-  //       console.log(e.offsetX, e.offsetY)
-  //     );
-
-  //     return () => {
-  //       canvasRef.current.removeEventListener("mousemove", (e) =>
-  //         console.log(e.offsetX, e.offsetY)
-  //       );
-  //     };
-  //   }, []);
+  useEffect(() => {
+    //  console.log(canvasRef);
+    //   canvasRef.current.addEventListener("mousemove", (e) =>
+    //     console.log(e.offsetX, e.offsetY)
+    //   );
+    //   return () => {
+    //     canvasRef.current.removeEventListener("mousemove", (e) =>
+    //       console.log(e.offsetX, e.offsetY)
+    //     );
+    //   };
+  }, []);
 
   //   useEffect(() => {
   //     mouseX = props.mouseX;

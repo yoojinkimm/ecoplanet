@@ -72,6 +72,7 @@ export const Home = () => {
         </section>
       </main>
 
+      {/* footer */}
       <div className="footer-container">
         <div className="footer-inner">
           <nav>
@@ -87,12 +88,6 @@ export const Home = () => {
           </nav>
         </div>
       </div>
-
-      {/* mouse effect */}
-      {/* <div
-        className="home-mouse-effect"
-        style={{ top: mouseY + 10, left: mouseX - 50 }}
-      /> */}
     </div>
   );
 };
