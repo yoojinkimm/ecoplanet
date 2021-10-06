@@ -6,26 +6,27 @@ import IconBasket from "../../assets/icons/icon_basket.png";
 
 import { productList } from "../../assets/data/product.js";
 import { CircularSelector } from "../../components";
+import {
+  IoIosArrowDropleftCircle,
+  IoIosArrowDroprightCircle,
+} from "react-icons/io";
 
 export const Home = () => {
   const history = useHistory();
-  const [mouseX, setMouseX] = useState(window.innerWidth / 2);
-  const [mouseY, setMouseY] = useState(window.innerHeight / 2);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
-  /* for mouse effect */
-  const _onMouseMove = (e) => {
-    // console.log(e.clientY, e.target.offsetTop);
-    // setMouseX(e.clientX);
-    // setMouseY(e.clientY);
-    //
-    // setMouseX(e.clientX + e.target.offsetLeft);
-    // if (e.clientY >= e.target.offsetTop) setMouseY(e.clientY);
-    // else setMouseY(e.target.offsetTop);
+  const decreaseIndex = () => {
+    if (selectedIndex === 0) setSelectedIndex(productList.length - 1);
+    else setSelectedIndex(selectedIndex - 1);
+  };
+
+  const increaseIndex = () => {
+    if (selectedIndex === productList.length - 1) setSelectedIndex(0);
+    else setSelectedIndex(selectedIndex + 1);
   };
 
   return (
-    <div className="home-background" onMouseMove={_onMouseMove}>
+    <div className="home-background">
       {/* header */}
       <div className="header-container">
         <div className="header-inner">
@@ -45,28 +46,39 @@ export const Home = () => {
         <section>
           <div className="home-contents-container">
             <div className="home-top-container act jct">
-              <div className="home-product-container col act jct">
+              <IoIosArrowDropleftCircle
+                className="home-arrow-icon pointer"
+                style={{ left: "1rem" }}
+                onClick={decreaseIndex}
+              />
+              <div className="home-product-container act jct">
                 <img
                   className="home-product-icon"
                   src={productList[selectedIndex].image}
                 />
                 <img className="home-basket-icon" src={IconBasket} />
-                <span className="home-product-name fc-white fs-24 f-bold">
+                <span className="home-product-name fc-white fs-24 f-bold act jct">
                   {productList[selectedIndex].name}
                 </span>
               </div>
+              <IoIosArrowDroprightCircle
+                onClick={increaseIndex}
+                className="home-arrow-icon pointer"
+                style={{ right: "1rem" }}
+              />
             </div>
             <div className="home-bottom-container">
-              <div style={{ marginLeft: "calc(45%" }} />
+              <div style={{ marginLeft: "calc(5%" }} />
               {productList.map((item, index) => {
                 return (
                   <img
-                    className="home-product-select"
+                    onClick={() => setSelectedIndex(index)}
+                    className="home-product-select pointer"
                     src={productList[index].image}
                   />
                 );
               })}
-              <div style={{ marginRight: "calc(45%" }} />
+              <div style={{ marginRight: "calc(5%" }} />
             </div>
           </div>
         </section>
@@ -84,7 +96,16 @@ export const Home = () => {
             </a>
           </nav>
           <nav className="footer-right-menu  pointer fc-primary">
-            <a href="/data">SELECT</a>
+            <a
+              onClick={() =>
+                history.push({
+                  pathname: "/data",
+                  state: { index: selectedIndex },
+                })
+              }
+            >
+              SELECT
+            </a>
           </nav>
         </div>
       </div>

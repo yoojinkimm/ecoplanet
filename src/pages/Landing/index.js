@@ -329,13 +329,13 @@ export const Landing = () => {
         />
       </div>
       {/* header */}
-      <div className="header-container">
+      {/* <div className="header-container">
         <nav>
           <a className="header-logo fc-primary pointer" href="/">
             ECO PLANET
           </a>
         </nav>
-      </div>
+      </div> */}
 
       {/* main contents */}
       <main>
