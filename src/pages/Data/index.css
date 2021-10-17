@@ -57,7 +57,6 @@
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 100;
   font-size: 2rem;
   animation: arrowAnim 2s ease-in-out infinite;
 }

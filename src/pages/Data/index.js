@@ -33,13 +33,17 @@ export const Data = () => {
         //  console.log(window.scrollY);
 
         // 해당 제품의 탄소배출량
-        if (window.scrollY <= height) setESize(productList[index]?.amount);
+        if (window.scrollY <= height)
+          setESize(productList[index]?.amount * 200);
         // 제품을 생산한 기업의 총 탄소배출량
         else if (window.scrollY > height && window.scrollY < height * 2)
-          setESize(productList[index]?.company_amount / 2000);
+          setESize(productList[index]?.company_amount / 300000);
         // 기업의 원단위 탄소배출량 대비 가격으로 계산한 탄소배출량
-        else if (window.scrollY > height * 2 && window.scrollY < height * 3)
-          setESize(productList[index]?.amount_per_won / 2);
+        else if (
+          window.scrollY > height * 2 &&
+          window.scrollY < height * 3 * 100
+        )
+          setESize(productList[index]?.amount_per_won * 200);
       }, 300),
     []
   );
@@ -121,9 +125,7 @@ export const Data = () => {
           index={index}
           text={"you and company made"}
           amount={productList[index]?.amount_per_won}
-          caption={
-            "기업의 원단위 탄소배출량 과 제품 가격으로 계산한 탄소배출량"
-          }
+          caption={"기업의 원단위 탄소배출량과 제품 가격으로 산출한 탄소배출량"}
         />
       </div>
 
