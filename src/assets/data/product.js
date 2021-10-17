@@ -1,11 +1,12 @@
 import 칠성사이다250 from "../../assets/images/칠성사이다250.png";
 
+/* 모든 것은 kg 단위입니다. */
 export const productList = [
   {
     name: "칠성사이다 250mL",
     image: 칠성사이다250,
     company: "롯데칠성음료(주)",
-    amount: 99,
+    amount: 0.99,
     badge: "탄소발자국",
     company_amount: 1000000,
     amount_per_won: 1000,

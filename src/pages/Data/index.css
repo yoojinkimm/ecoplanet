@@ -34,5 +34,30 @@
   display: flex;
   width: 100vw;
   height: calc(1vh * 100 - 10rem);
-  padding-top: 10rem;
+  padding-top: 12rem;
+}
+
+@keyframes arrowAnim {
+  0% {
+    opacity: 0.7;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.2;
+    transform: translateY(-15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.data-arrow-container {
+  position: fixed;
+  padding-bottom: 1rem;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  font-size: 2rem;
+  animation: arrowAnim 2s ease-in-out infinite;
 }
