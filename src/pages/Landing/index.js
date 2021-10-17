@@ -338,7 +338,7 @@ export const Landing = () => {
       </div> */}
 
       {/* main contents */}
-      <main>
+      <div className="main">
         <section>
           <div className="landing-contents-container ">
             <a className="landing-button-text pointer" href="/home">
@@ -347,7 +347,7 @@ export const Landing = () => {
             </a>
           </div>
         </section>
-      </main>
+      </div>
 
       {/* mouse effect */}
       {/* <div

@@ -42,7 +42,7 @@ export const Home = () => {
       </div>
 
       {/* main contents */}
-      <main>
+      <div className="main">
         <section>
           <div className="home-contents-container">
             <div className="home-top-container act jct">
@@ -57,7 +57,7 @@ export const Home = () => {
                   src={productList[selectedIndex].image}
                 />
                 <img className="home-basket-icon" src={IconBasket} />
-                <span className="home-product-name fc-white fs-24 f-bold act jct">
+                <span className="home-product-name fc-white fs-h1 f-bold act jct">
                   {productList[selectedIndex].name}
                 </span>
               </div>
@@ -82,7 +82,7 @@ export const Home = () => {
             </div>
           </div>
         </section>
-      </main>
+      </div>
 
       {/* footer */}
       <div className="footer-container">

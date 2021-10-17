@@ -7,8 +7,8 @@ export const productList = [
     company: "롯데칠성음료(주)",
     amount: 99,
     badge: "탄소발자국",
-    company_amout: 1000000,
-    amout_per_won: 1000,
+    company_amount: 1000000,
+    amount_per_won: 1000,
   },
   {
     name: "스프라이트 PET 500mL",

@@ -22,6 +22,7 @@ export const P5object = ({
     p5.stroke(239);
     p5.strokeWeight(1);
 
+    // for centered object
     const xPos = canvasWidth / 2;
     const yPos = canvasHeight / 2;
     let amount = easeInOutQuad(amountInput, 0, 1, 1);
