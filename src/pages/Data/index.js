@@ -14,6 +14,9 @@ export const Data = () => {
   const [eSize, setESize] = useState(5);
   const [aInput, setAInput] = useState(1);
 
+  const [showArrow, setShowArrow] = useState(true);
+  const [showObject, setShowObject] = useState(true);
+
   const width = window.innerWidth;
   const height = window.innerHeight - 100;
 
@@ -30,20 +33,36 @@ export const Data = () => {
     () =>
       throttle(() => {
         // if (!scrollRef.current) return;
-        //  console.log(window.scrollY);
+        // console.log("window: ", window.scrollY);
+        // console.log("scrollRef: ", scrollRef.current.scrollHeight;
 
         // 해당 제품의 탄소배출량
-        if (window.scrollY <= height)
+        if (window.scrollY <= height) {
           setESize(productList[index]?.amount * 200);
+          setShowArrow(true);
+          setShowObject(true);
+        }
         // 제품을 생산한 기업의 총 탄소배출량
-        else if (window.scrollY > height && window.scrollY < height * 2)
+        else if (window.scrollY > height && window.scrollY <= height * 2) {
           setESize(productList[index]?.company_amount / 300000);
+          setShowArrow(true);
+          setShowObject(true);
+        }
         // 기업의 원단위 탄소배출량 대비 가격으로 계산한 탄소배출량
-        else if (
-          window.scrollY > height * 2 &&
-          window.scrollY < height * 3 * 100
-        )
+        else if (window.scrollY > height * 2 && window.scrollY <= height * 3) {
           setESize(productList[index]?.amount_per_won * 200);
+          setShowArrow(true);
+          setShowObject(true);
+        }
+        // 인터랙션 페이지
+        else if (
+          window.scrollY > height * 3 &&
+          window.scrollY <=
+            scrollRef?.current?.scrollHeight - window.innerHeight
+        ) {
+          setShowObject(false);
+          setShowArrow(false);
+        }
       }, 300),
     []
   );
@@ -94,15 +113,16 @@ export const Data = () => {
             </a>
           </nav>
           <nav className="header-right-menu  pointer fc-primary">
-            <span>All Data</span>
+            <a href="/alldata">All Data</a>
           </nav>
         </div>
       </div>
 
-      <div className="p5-container">
-        <P5object entitySize={eSize} amountInput={aInput} />
-      </div>
-
+      {showObject && (
+        <div className="p5-container">
+          <P5object entitySize={eSize} amountInput={aInput} />
+        </div>
+      )}
       {/* main contents */}
       <div
         className="data-main-container"
@@ -127,6 +147,23 @@ export const Data = () => {
           amount={productList[index]?.amount_per_won}
           caption={"기업의 원단위 탄소배출량과 제품 가격으로 산출한 탄소배출량"}
         />
+        <div
+          className="data-container act"
+          style={{ justifyContent: "flex-end" }}
+        >
+          <div className="col act data-interaction-container">
+            <span className="fc-white fs-h1 f-bold wow fadeInUp">
+              힘을 모아봐요.
+            </span>
+            <div className="row act jct data-input-container">
+              <input
+                placeholder={"남기고 싶은 메세지를 적어주세요."}
+                className="data-message-input"
+              />
+              <button className="data-message-button pointer">힘 보태기</button>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* footer */}
@@ -146,9 +183,11 @@ export const Data = () => {
         </div>
       </div>
 
-      <div className="data-arrow-container wow fadeInUp act jct">
-        <IoIosArrowDown className="fc-primary" />
-      </div>
+      {showArrow && (
+        <div className="data-arrow-container wow fadeInUp act jct">
+          <IoIosArrowDown className="fc-primary" />
+        </div>
+      )}
     </div>
   );
 };

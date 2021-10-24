@@ -141,6 +141,10 @@ section {
   backdrop-filter: blur(4px) saturate(150%);
 }
 
+input:focus {
+  outline: none;
+}
+
 /* only PC */
 @media (min-width: 940px) {
   body {

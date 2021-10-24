@@ -36,7 +36,7 @@ export const Home = () => {
             </a>
           </nav>
           <nav className="header-right-menu  pointer fc-primary">
-            <span>All Data</span>
+            <a href="/alldata">All Data</a>
           </nav>
         </div>
       </div>

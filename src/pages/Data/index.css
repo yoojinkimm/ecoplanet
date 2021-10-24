@@ -4,7 +4,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  background: rgb(0, 0, 0);
+  /* background: rgb(0, 0, 0); */
   overflow: hidden;
 }
 .data-container {
@@ -36,7 +36,34 @@
   height: calc(1vh * 100 - 10rem);
   padding-top: 12rem;
 }
-
+.data-interaction-container {
+  width: 50%;
+  padding-bottom: 2rem;
+  z-index: 100;
+}
+.data-input-container {
+  width: 100%;
+  margin-top: 1.5rem;
+  gap: 1rem;
+}
+.data-message-input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid rgb(148, 251, 86);
+  min-width: 15rem;
+  font-size: 1.1rem;
+  backdrop-filter: blur(7px) saturate(150%);
+  color: white;
+}
+.data-message-button {
+  background-color: rgb(148, 251, 86);
+  font-size: 1.1rem;
+  border: none;
+  padding: 0.5rem 0.5rem;
+}
+.data-message-button:active {
+  opacity: 0.6;
+}
 @keyframes arrowAnim {
   0% {
     opacity: 0.7;
@@ -59,4 +86,17 @@
   right: 0;
   font-size: 2rem;
   animation: arrowAnim 2s ease-in-out infinite;
+}
+
+@media (max-width: 747.98px) {
+  .data-interaction-container {
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+@media screen {
+  .data-message-button:hover {
+    /* opacity: 0.6; */
+  }
 }
