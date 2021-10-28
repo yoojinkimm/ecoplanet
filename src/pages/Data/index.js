@@ -44,7 +44,7 @@ export const Data = () => {
         }
         // 제품을 생산한 기업의 총 탄소배출량
         else if (window.scrollY > height && window.scrollY <= height * 2) {
-          setESize(productList[index]?.company_amount / 300000);
+          setESize(productList[index]?.company_amount / 300);
           setShowArrow(true);
           setShowObject(true);
         }
@@ -105,7 +105,7 @@ export const Data = () => {
   return (
     <div className="data-background">
       {/* header */}
-      <div className="header-container">
+      <header className="header-container">
         <div className="header-inner">
           <nav>
             <a class="header-logo pointer fc-primary" href="/">
@@ -116,7 +116,7 @@ export const Data = () => {
             <a href="/alldata">All Data</a>
           </nav>
         </div>
-      </div>
+      </header>
 
       {showObject && (
         <div className="p5-container">
@@ -138,7 +138,7 @@ export const Data = () => {
         <Page
           index={index}
           text={"company made"}
-          amount={productList[index]?.company_amount}
+          amount={productList[index]?.company_amount * 1000}
           caption={"제품을 생산한 기업의 총 탄소배출량"}
         />
         <Page
@@ -167,21 +167,19 @@ export const Data = () => {
       </div>
 
       {/* footer */}
-      <div className="footer-container">
-        <div className="footer-inner">
-          <nav>
-            <a
-              class="pointer fc-primary f-bold"
-              onClick={() => history.goBack()}
-            >
-              B<br />A<br />C<br />K
-            </a>
-          </nav>
-          <nav className="footer-right-menu  pointer fc-primary">
-            <a href="/">FINISH</a>
-          </nav>
-        </div>
-      </div>
+      <footer className="footer-container">
+        <nav
+          class="pointer fc-primary f-bold footer-left-menu"
+          onClick={() => history.goBack()}
+        >
+          <a>
+            B<br />A<br />C<br />K
+          </a>
+        </nav>
+        <nav className="footer-right-menu  pointer fc-primary">
+          <a href="/">FINISH</a>
+        </nav>
+      </footer>
 
       {showArrow && (
         <div className="data-arrow-container wow fadeInUp act jct">
