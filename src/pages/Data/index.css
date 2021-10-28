@@ -36,7 +36,7 @@
   height: calc(1vh * 100 - 10rem);
   padding-top: 12rem;
 }
-.data-interaction-container {
+.data-message-container {
   width: 50%;
   padding-bottom: 2rem;
   z-index: 100;
@@ -87,7 +87,17 @@
   font-size: 2rem;
   animation: arrowAnim 2s ease-in-out infinite;
 }
-
+.memo-list-container {
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  gap: 1.5rem 0px;
+}
+.memo-container {
+  width: 20vw;
+  transition: all 0.3s ease-out;
+}
 @media (max-width: 747.98px) {
   .data-interaction-container {
     width: 100%;

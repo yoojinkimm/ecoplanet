@@ -14,6 +14,10 @@ export const Data = () => {
   const [eSize, setESize] = useState(5);
   const [aInput, setAInput] = useState(1);
 
+  const [memoList, setMemoList] = useState([
+    { size: 5, message: "감사합니다!" },
+  ]);
+
   const [showArrow, setShowArrow] = useState(true);
   const [showObject, setShowObject] = useState(true);
 
@@ -151,7 +155,20 @@ export const Data = () => {
           className="data-container act"
           style={{ justifyContent: "flex-end" }}
         >
-          <div className="col act data-interaction-container">
+          <div className="memo-list-container">
+            {memoList.map((v, i) => {
+              return (
+                <div className="memo-container">
+                  <P5object
+                    entitySize={v.size}
+                    amountInput={1}
+                    canvasWidth={"20vw"}
+                  />
+                </div>
+              );
+            })}
+          </div>
+          <div className="col act data-message-container">
             <span className="fc-white fs-h1 f-bold wow fadeInUp">
               힘을 모아봐요.
             </span>
