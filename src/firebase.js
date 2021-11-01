@@ -1,4 +1,8 @@
-import * as firebase from "firebase";
+import firebase from "firebase";
+import "firebase/firestore";
+import "firebase/database";
+import "firebase/analytics";
+
 let database;
 let config = {
   apiKey: "AIzaSyAqesPk0vqtdfJBnUlwD3TV-91lxOOqido",
@@ -12,6 +16,7 @@ let config = {
 export const fire = () => {
   if (!firebase.apps.length) {
     firebase.initializeApp(config);
+    firebase.analytics();
   }
   database = firebase.database();
 };

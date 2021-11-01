@@ -2,7 +2,7 @@ import "./App.css";
 import { Home, Landing, Data, AllData } from "./pages";
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 import React, { useEffect } from "react";
-// import { fire } from "./firebase";
+import { fire } from "./firebase";
 
 function App() {
   useEffect(() => {
