@@ -14,6 +14,10 @@ export const Data = () => {
   const [eSize, setESize] = useState(5);
   const [aInput, setAInput] = useState(1);
 
+  const [memoList, setMemoList] = useState([
+    { size: 5, message: "감사합니다!" },
+  ]);
+
   const [showArrow, setShowArrow] = useState(true);
   const [showObject, setShowObject] = useState(true);
 
@@ -44,7 +48,7 @@ export const Data = () => {
         }
         // 제품을 생산한 기업의 총 탄소배출량
         else if (window.scrollY > height && window.scrollY <= height * 2) {
-          setESize(productList[index]?.company_amount / 300000);
+          setESize(productList[index]?.company_amount / 300);
           setShowArrow(true);
           setShowObject(true);
         }
@@ -138,7 +142,7 @@ export const Data = () => {
         <Page
           index={index}
           text={"company made"}
-          amount={productList[index]?.company_amount}
+          amount={productList[index]?.company_amount * 1000}
           caption={"제품을 생산한 기업의 총 탄소배출량"}
         />
         <Page
@@ -151,7 +155,20 @@ export const Data = () => {
           className="data-container act"
           style={{ justifyContent: "flex-end" }}
         >
-          <div className="col act data-interaction-container">
+          <div className="memo-list-container">
+            {memoList.map((v, i) => {
+              return (
+                <div className="memo-container">
+                  <P5object
+                    entitySize={v.size}
+                    amountInput={1}
+                    canvasWidth={"20vw"}
+                  />
+                </div>
+              );
+            })}
+          </div>
+          <div className="col act data-message-container">
             <span className="fc-white fs-h1 f-bold wow fadeInUp">
               힘을 모아봐요.
             </span>
@@ -168,19 +185,17 @@ export const Data = () => {
 
       {/* footer */}
       <footer className="footer-container">
-        <div className="footer-inner">
-          <nav>
-            <a
-              class="pointer fc-primary f-bold"
-              onClick={() => history.goBack()}
-            >
-              B<br />A<br />C<br />K
-            </a>
-          </nav>
-          <nav className="footer-right-menu  pointer fc-primary">
-            <a href="/">FINISH</a>
-          </nav>
-        </div>
+        <nav
+          class="pointer fc-primary f-bold footer-left-menu"
+          onClick={() => history.goBack()}
+        >
+          <a>
+            B<br />A<br />C<br />K
+          </a>
+        </nav>
+        <nav className="footer-right-menu  pointer fc-primary">
+          <a href="/">FINISH</a>
+        </nav>
       </footer>
 
       {showArrow && (

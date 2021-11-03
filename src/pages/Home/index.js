@@ -28,7 +28,7 @@ export const Home = () => {
   return (
     <div className="home-background">
       {/* header */}
-      <div className="header-container">
+      <header className="header-container">
         <div className="header-inner">
           <nav>
             <a class="header-logo pointer fc-primary" href="/">
@@ -39,7 +39,7 @@ export const Home = () => {
             <a href="/alldata">All Data</a>
           </nav>
         </div>
-      </div>
+      </header>
 
       {/* main contents */}
       <div className="main">
@@ -85,30 +85,28 @@ export const Home = () => {
       </div>
 
       {/* footer */}
-      <div className="footer-container">
-        <div className="footer-inner">
-          <nav>
-            <a
-              class="pointer fc-primary f-bold"
-              onClick={() => history.goBack()}
-            >
-              B<br />A<br />C<br />K
-            </a>
-          </nav>
-          <nav className="footer-right-menu  pointer fc-primary">
-            <a
-              onClick={() =>
-                history.push({
-                  pathname: "/data",
-                  state: { index: selectedIndex },
-                })
-              }
-            >
-              SELECT
-            </a>
-          </nav>
-        </div>
-      </div>
+      <footer className="footer-container">
+        <nav
+          class="pointer fc-primary f-bold footer-left-menu"
+          onClick={() => history.goBack()}
+        >
+          <a>
+            B<br />A<br />C<br />K
+          </a>
+        </nav>
+        <nav className="footer-right-menu  pointer fc-primary">
+          <a
+            onClick={() =>
+              history.push({
+                pathname: "/data",
+                state: { index: selectedIndex },
+              })
+            }
+          >
+            SELECT
+          </a>
+        </nav>
+      </footer>
     </div>
   );
 };
