@@ -8,7 +8,7 @@ export const AllData = () => {
   return (
     <div className="data-background">
       {/* header */}
-      <div className="header-container">
+      <header className="header-container">
         <div className="header-inner">
           <nav>
             <a class="header-logo pointer fc-primary" href="/">
@@ -19,10 +19,12 @@ export const AllData = () => {
             <a href="/alldata">All Data</a>
           </nav>
         </div>
-      </div>
+      </header>
+
+      {/* contents */}
 
       {/* footer */}
-      <div className="footer-container">
+      <footer className="footer-container">
         <div className="footer-inner">
           <nav>
             <a
@@ -36,7 +38,7 @@ export const AllData = () => {
             <a href="/">FINISH</a>
           </nav>
         </div>
-      </div>
+      </footer>
     </div>
   );
 };

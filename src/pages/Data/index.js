@@ -105,7 +105,7 @@ export const Data = () => {
   return (
     <div className="data-background">
       {/* header */}
-      <div className="header-container">
+      <header className="header-container">
         <div className="header-inner">
           <nav>
             <a class="header-logo pointer fc-primary" href="/">
@@ -116,7 +116,7 @@ export const Data = () => {
             <a href="/alldata">All Data</a>
           </nav>
         </div>
-      </div>
+      </header>
 
       {showObject && (
         <div className="p5-container">
@@ -167,7 +167,7 @@ export const Data = () => {
       </div>
 
       {/* footer */}
-      <div className="footer-container">
+      <footer className="footer-container">
         <div className="footer-inner">
           <nav>
             <a
@@ -181,7 +181,7 @@ export const Data = () => {
             <a href="/">FINISH</a>
           </nav>
         </div>
-      </div>
+      </footer>
 
       {showArrow && (
         <div className="data-arrow-container wow fadeInUp act jct">
