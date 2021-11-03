@@ -37,6 +37,8 @@
   padding-top: 12rem;
 }
 .data-message-container {
+  position: fixed;
+  bottom: 0;
   width: 50%;
   padding-bottom: 2rem;
   z-index: 100;
@@ -64,6 +66,23 @@
 .data-message-button:active {
   opacity: 0.6;
 }
+.memo-list-container {
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  gap: 1.5rem 0px;
+}
+.memo-container {
+  width: 20vw;
+  height: auto;
+}
+.memo-object {
+  width: 50%;
+  height: 50%;
+  background-color: rgb(148, 251, 86);
+  border-radius: 100px;
+}
 @keyframes arrowAnim {
   0% {
     opacity: 0.7;
@@ -87,17 +106,7 @@
   font-size: 2rem;
   animation: arrowAnim 2s ease-in-out infinite;
 }
-.memo-list-container {
-  flex-wrap: wrap;
-  display: flex;
-  flex-direction: row;
-  width: auto;
-  gap: 1.5rem 0px;
-}
-.memo-container {
-  width: 20vw;
-  transition: all 0.3s ease-out;
-}
+
 @media (max-width: 747.98px) {
   .data-interaction-container {
     width: 100%;

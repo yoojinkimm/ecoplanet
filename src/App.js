@@ -6,7 +6,7 @@ import { fire } from "./firebase";
 
 function App() {
   useEffect(() => {
-    // fire();
+    fire();
   }, []);
 
   return (

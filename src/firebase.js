@@ -7,6 +7,8 @@ let database;
 let config = {
   apiKey: "AIzaSyAqesPk0vqtdfJBnUlwD3TV-91lxOOqido",
   authDomain: "ecoplanet-9cf46.firebaseapp.com",
+  databaseURL:
+    "https://ecoplanet-9cf46-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "ecoplanet-9cf46",
   storageBucket: "ecoplanet-9cf46.appspot.com",
   messagingSenderId: "810414226508",
@@ -14,9 +16,19 @@ let config = {
   measurementId: "G-2EDTCLRKFK",
 };
 export const fire = () => {
-  if (!firebase.apps.length) {
-    firebase.initializeApp(config);
-    firebase.analytics();
-  }
+  // firebase.initializeApp(config);
+  // firebase.analytics();
+  // database = firebase.database();
+};
+
+export const getDB = () => {
+  firebase.initializeApp(config);
+  firebase.analytics();
   database = firebase.database();
+  return database.ref("messages").once("value");
+};
+
+export const postDB = (data) => {
+  // firebase.initializeApp(config);
+  return database.ref("messages").push(data);
 };

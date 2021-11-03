@@ -1,22 +1,32 @@
-import React, { useState, useEffect, useRef, useMemo } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useMemo,
+  useDebugValue,
+} from "react";
 import "./index.css";
 import { Route, Link, useHistory } from "react-router-dom";
 import { Page } from "./Page";
+import { Interaction } from "./Interaction";
 import { P5object } from "../../components";
 import { throttle } from "lodash";
 import { productList } from "../../assets/data/product";
 import { IoIosArrowDown } from "react-icons/io";
 import WOW from "wowjs";
+import { getDB, postDB } from "../../firebase";
 
 export const Data = () => {
   const history = useHistory();
+
   const [index, setIndex] = useState(0);
   const [eSize, setESize] = useState(5);
   const [aInput, setAInput] = useState(1);
 
-  const [memoList, setMemoList] = useState([
-    { size: 5, message: "감사합니다!" },
-  ]);
+  const [messageList, setMessageList] = useState();
+  const [input, setInput] = useState();
+  const [color, setColor] = useState("#94fb56");
+  const [number, setNumber] = useState(5);
 
   const [showArrow, setShowArrow] = useState(true);
   const [showObject, setShowObject] = useState(true);
@@ -86,6 +96,32 @@ export const Data = () => {
     window.requestAnimationFrame(loop);
   };
 
+  const getData = () => {
+    try {
+      getDB().then((snapshot) => {
+        let data = [];
+        snapshot.forEach((snap) => {
+          data.push(snap.val());
+        });
+        setMessageList(data);
+        console.log("data: ", data);
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const postData = () => {
+    try {
+      const newData = { color: color, message: input, number: number };
+      postDB(newData);
+      getData();
+    } catch (e) {
+      console.log(e);
+      getData();
+    }
+  };
+
   useEffect(() => {
     window.addEventListener("scroll", throttledScroll);
     return () => {
@@ -96,7 +132,7 @@ export const Data = () => {
   useEffect(() => {
     console.log("selected index: ", history.location.state?.index);
     setIndex(history.location.state?.index);
-    // const wow = new WOW.WOW().init();
+    getData();
 
     // 동작하지 않습니다! ㅠㅠ
     // window.addEventListener("mousemove", mouseFunc, false);
@@ -151,36 +187,17 @@ export const Data = () => {
           amount={productList[index]?.amount_per_won}
           caption={"기업의 원단위 탄소배출량과 제품 가격으로 산출한 탄소배출량"}
         />
-        <div
-          className="data-container act"
-          style={{ justifyContent: "flex-end" }}
-        >
-          <div className="memo-list-container">
-            {memoList.map((v, i) => {
-              return (
-                <div className="memo-container">
-                  <P5object
-                    entitySize={v.size}
-                    amountInput={1}
-                    canvasWidth={"20vw"}
-                  />
-                </div>
-              );
-            })}
-          </div>
-          <div className="col act data-message-container">
-            <span className="fc-white fs-h1 f-bold wow fadeInUp">
-              힘을 모아봐요.
-            </span>
-            <div className="row act jct data-input-container">
-              <input
-                placeholder={"남기고 싶은 메세지를 적어주세요."}
-                className="data-message-input"
-              />
-              <button className="data-message-button pointer">힘 보태기</button>
-            </div>
-          </div>
-        </div>
+        <Interaction
+          messageList={messageList}
+          postData={postData}
+          input={input}
+          setInput={setInput}
+          number={number}
+          setNumber={setNumber}
+          color={color}
+          setColor={setColor}
+          showInput={!showArrow}
+        />
       </div>
 
       {/* footer */}
