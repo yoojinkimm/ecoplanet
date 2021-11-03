@@ -8,7 +8,7 @@ import 큐원하얀설탕 from "../../assets/images/큐원하얀설탕.png";
 import 필라이트500 from "../../assets/images/필라이트500.png";
 import 스프라이트15 from "../../assets/images/스프라이트15.png";
 import 스프라이트500 from "../../assets/images/스프라이트500.png";
-// import 테라500 from "../../assets/images/테라500.png";
+import 삼다수 from "../../assets/images/삼다수.png";
 
 /* 모든 것은 kg 단위입니다. */
 export const productList = [
@@ -54,7 +54,7 @@ export const productList = [
   },
   {
     name: "제주 삼다수 2.0L",
-    image: 칠성사이다250,
+    image: 삼다수,
     company: "제주특별자치도개발공사",
     amount: 0.362,
     badge: "탄소발자국",
