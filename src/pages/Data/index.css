@@ -85,6 +85,7 @@
   flex-direction: row;
   width: auto;
   gap: 1.5rem 0px;
+  padding-bottom: 200px;
 }
 .memo-container {
   width: 20vw;

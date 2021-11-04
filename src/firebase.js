@@ -15,17 +15,15 @@ let config = {
   appId: "1:810414226508:web:09c57ee0591bb7a5fdc8e9",
   measurementId: "G-2EDTCLRKFK",
 };
-export const fire = () => {
-  firebase.initializeApp(config);
-  firebase.analytics();
-};
+
+firebase.initializeApp(config);
+firebase.analytics();
+database = firebase.database();
 
 export const getDB = () => {
-  database = firebase.database();
   return database.ref("messages").once("value");
 };
 
 export const postDB = (data) => {
-  database = firebase.database();
   return database.ref("messages").push(data);
 };

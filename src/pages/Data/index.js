@@ -36,7 +36,7 @@ export const Data = () => {
   const [showObject, setShowObject] = useState(true);
 
   const width = window.innerWidth;
-  const height = window.innerHeight - 100;
+  const height = window.innerHeight - 150;
 
   const [mouseX, setMouseX] = useState(width / 2);
   const [mouseY, setMouseY] = useState(height / 2);
@@ -117,7 +117,7 @@ export const Data = () => {
 
   const postData = () => {
     try {
-      const newData = { color: color, message: input, number: number };
+      const newData = { color: color.hex, message: input, number: number };
       postDB(newData);
       getData();
 

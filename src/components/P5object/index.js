@@ -17,12 +17,30 @@ export const P5object = ({
     p5.frameRate(30);
   };
 
+  function hexToRgb(hexType) {
+    /* 맨 앞의 "#" 기호를 삭제하기. */
+    var hex = hexType.trim().replace("#", "");
+
+    /* rgb로 각각 분리해서 배열에 담기. */
+    var rgb =
+      3 === hex.length ? hex.match(/[a-f\d]/gi) : hex.match(/[a-f\d]{2}/gi);
+
+    rgb.forEach(function (str, x, arr) {
+      /* rgb 각각의 헥사값이 한자리일 경우, 두자리로 변경하기. */
+      if (str.length == 1) str = str + str;
+
+      /* 10진수로 변환하기. */
+      arr[x] = parseInt(str, 16);
+    });
+
+    return "rgb(" + rgb.join(", ") + ")";
+  }
+
   const draw = (p5) => {
     p5.background(0);
-    if (color?.rgb) p5.fill(color?.rgb);
+    if (color) p5.fill(hexToRgb(color));
+    // hex값으로 저장함
     else p5.fill(148, 251, 86);
-    p5.stroke(239);
-    p5.strokeWeight(1);
 
     // for centered object
     const xPos = canvasWidth / 2;
@@ -45,7 +63,8 @@ export const P5object = ({
   function drawEntity(p5, x, y, crazy, entityNum) {
     const mult = p5.map(crazy, 0, 1, 0, 20);
 
-    p5.stroke(148, 251, 86);
+    if (color) p5.stroke(hexToRgb(color));
+    else p5.stroke(148, 251, 86);
     p5.strokeWeight(1);
 
     p5.beginShape();
