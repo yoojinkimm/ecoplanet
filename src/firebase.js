@@ -16,19 +16,16 @@ let config = {
   measurementId: "G-2EDTCLRKFK",
 };
 export const fire = () => {
-  // firebase.initializeApp(config);
-  // firebase.analytics();
-  // database = firebase.database();
+  firebase.initializeApp(config);
+  firebase.analytics();
 };
 
 export const getDB = () => {
-  firebase.initializeApp(config);
-  firebase.analytics();
   database = firebase.database();
   return database.ref("messages").once("value");
 };
 
 export const postDB = (data) => {
-  // firebase.initializeApp(config);
+  database = firebase.database();
   return database.ref("messages").push(data);
 };

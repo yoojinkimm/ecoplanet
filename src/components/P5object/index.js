@@ -6,6 +6,7 @@ export const P5object = ({
   canvasHeight = window.innerHeight,
   entitySize = 15,
   amountInput = 1,
+  color,
 }) => {
   let timer = 0;
   const speed = 0.001;
@@ -18,7 +19,8 @@ export const P5object = ({
 
   const draw = (p5) => {
     p5.background(0);
-    p5.fill(148, 251, 86);
+    if (color?.rgb) p5.fill(color?.rgb);
+    else p5.fill(148, 251, 86);
     p5.stroke(239);
     p5.strokeWeight(1);
 

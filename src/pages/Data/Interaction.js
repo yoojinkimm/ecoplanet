@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { P5object } from "../../components";
+import Slider from "react-rangeslider";
+import "react-rangeslider/lib/index.css";
 
 export const Interaction = ({
   messageList,
@@ -9,8 +11,8 @@ export const Interaction = ({
   number,
   setNumber,
   color,
-  setColor,
   showInput,
+  setShowModal,
 }) => {
   return (
     <div className="data-container act">
@@ -23,6 +25,7 @@ export const Interaction = ({
                 amountInput={1}
                 canvasWidth={100}
                 canvasHeight={100}
+                color={v.color}
               />
               {/* <div className="memo-object" /> */}
               <span className="memo-text fc-white">{v.message}</span>
@@ -33,9 +36,27 @@ export const Interaction = ({
 
       {showInput && (
         <div className="col act data-message-container">
-          <span className="fc-white fs-h1 f-bold wow fadeInUp">
-            힘을 모아봐요.
+          <span className="fc-primary fs-h1 f-bold wow fadeInUp">
+            힘을 모아
           </span>
+          <div className="row act jct data-selector-container">
+            <div
+              className="data-color-picker pointer"
+              style={{ backgroundColor: color.hex }}
+              onClick={() => setShowModal(true)}
+            />
+            <div style={{ width: "8rem" }}>
+              <Slider
+                min={1}
+                max={5}
+                tooltip={false}
+                value={number}
+                orientation="horizontal"
+                onChange={setNumber}
+              />
+            </div>
+            <span className="fc-primary">{number}</span>
+          </div>
           <div className="row act jct data-input-container">
             <input
               value={input}
@@ -44,8 +65,11 @@ export const Interaction = ({
               placeholder={"남기고 싶은 메세지를 적어주세요."}
               className="data-message-input"
             />
-            <button onClick={postData} className="data-message-button pointer">
-              힘 보태기
+            <button
+              onClick={postData}
+              className="data-message-button pointer fc-primary"
+            >
+              SAVE
             </button>
           </div>
         </div>

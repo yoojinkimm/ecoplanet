@@ -45,7 +45,12 @@
 }
 .data-input-container {
   width: 100%;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+.data-selector-container {
+  width: 100%;
+  margin-top: 1rem;
   gap: 1rem;
 }
 .data-message-input {
@@ -56,15 +61,23 @@
   font-size: 1.1rem;
   backdrop-filter: blur(7px) saturate(150%);
   color: white;
+  padding: 0.5rem 0.5rem;
 }
 .data-message-button {
-  background-color: rgb(148, 251, 86);
+  border: 1px solid rgb(148, 251, 86);
   font-size: 1.1rem;
-  border: none;
   padding: 0.5rem 0.5rem;
+  background-color: transparent;
+  backdrop-filter: blur(7px) saturate(150%);
 }
 .data-message-button:active {
   opacity: 0.6;
+}
+.data-color-picker {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 2rem;
+  border: 1px solid white;
 }
 .memo-list-container {
   flex-wrap: wrap;
@@ -106,12 +119,38 @@
   font-size: 2rem;
   animation: arrowAnim 2s ease-in-out infinite;
 }
-
+.palette-back {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 300;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(7px);
+}
+.palette-container {
+  background-color: black;
+  padding: 3rem 2rem;
+  z-index: 400;
+}
 @media (max-width: 747.98px) {
   .data-interaction-container {
     width: 100%;
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+  .data-input-container {
+    flex-direction: column;
+  }
+  .data-message-button {
+    width: 100%;
+  }
+  .data-message-input {
+    width: 100%;
+  }
+  .memo-container {
+    width: 33.33vw;
   }
 }
 @media screen {

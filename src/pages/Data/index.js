@@ -15,6 +15,9 @@ import { productList } from "../../assets/data/product";
 import { IoIosArrowDown } from "react-icons/io";
 import WOW from "wowjs";
 import { getDB, postDB } from "../../firebase";
+import { useColor } from "react-color-palette";
+
+import { PaletteModal } from "./PaletteModal";
 
 export const Data = () => {
   const history = useHistory();
@@ -24,9 +27,10 @@ export const Data = () => {
   const [aInput, setAInput] = useState(1);
 
   const [messageList, setMessageList] = useState();
-  const [input, setInput] = useState();
-  const [color, setColor] = useState("#94fb56");
+  const [input, setInput] = useState("");
+  const [color, setColor] = useColor("hex", "#94fb56");
   const [number, setNumber] = useState(5);
+  const [showModal, setShowModal] = useState(false);
 
   const [showArrow, setShowArrow] = useState(true);
   const [showObject, setShowObject] = useState(true);
@@ -116,6 +120,10 @@ export const Data = () => {
       const newData = { color: color, message: input, number: number };
       postDB(newData);
       getData();
+
+      // setColor();
+      setNumber(5);
+      setInput("");
     } catch (e) {
       console.log(e);
       getData();
@@ -141,6 +149,10 @@ export const Data = () => {
       // window.removeEventListener("mousemove", mouseFunc, false);
     };
   }, []);
+
+  useEffect(() => {
+    console.log("color changed: ", color);
+  }, [color]);
 
   return (
     <div className="data-background">
@@ -195,8 +207,8 @@ export const Data = () => {
           number={number}
           setNumber={setNumber}
           color={color}
-          setColor={setColor}
           showInput={!showArrow}
+          setShowModal={setShowModal}
         />
       </div>
 
@@ -219,6 +231,14 @@ export const Data = () => {
         <div className="data-arrow-container wow fadeInUp act jct">
           <IoIosArrowDown className="fc-primary" />
         </div>
+      )}
+
+      {showModal && (
+        <PaletteModal
+          setShowModal={setShowModal}
+          color={color}
+          setColor={setColor}
+        />
       )}
     </div>
   );
