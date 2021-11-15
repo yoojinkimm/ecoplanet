@@ -14,7 +14,12 @@ import { throttle } from "lodash";
 import { productList } from "../../assets/data/product";
 import { IoIosArrowDown } from "react-icons/io";
 import WOW from "wowjs";
-import { getDB, postDB } from "../../firebase";
+import {
+  getMessages,
+  postMessages,
+  getTotalAmount,
+  putTotalAmount,
+} from "../../firebase";
 import { useColor } from "react-color-palette";
 
 import { PaletteModal } from "./PaletteModal";
@@ -27,6 +32,7 @@ export const Data = () => {
   const [aInput, setAInput] = useState(1);
 
   const [messageList, setMessageList] = useState();
+  const [totalAmount, setTotalAmount] = useState(0);
   const [input, setInput] = useState("");
   const [color, setColor] = useColor("hex", "#94fb56");
   const [number, setNumber] = useState(5);
@@ -85,30 +91,35 @@ export const Data = () => {
     []
   );
 
-  const mouseFunc = (e) => {
-    // 가운데 위치를 중심으로
-    setMouseX(e.clientX - window.innerWidth / 2);
-    setMouseY(e.clientY - window.innerHeight / 2);
+  // const mouseFunc = (e) => {
+  //   // 가운데 위치를 중심으로
+  //   setMouseX(e.clientX - window.innerWidth / 2);
+  //   setMouseY(e.clientY - window.innerHeight / 2);
 
-    console.log(e.clientX, e.clientY);
-  };
+  //   console.log(e.clientX, e.clientY);
+  // };
 
-  const loop = () => {
-    setObjectX(objectX + (mouseX - objectX) * fast);
-    setObjectY(objectY + (mouseY - objectY) * fast);
+  // const loop = () => {
+  //   setObjectX(objectX + (mouseX - objectX) * fast);
+  //   setObjectY(objectY + (mouseY - objectY) * fast);
 
-    window.requestAnimationFrame(loop);
-  };
+  //   window.requestAnimationFrame(loop);
+  // };
 
   const getData = () => {
     try {
-      getDB().then((snapshot) => {
+      getMessages().then((snapshot) => {
         let data = [];
         snapshot.forEach((snap) => {
           data.push(snap.val());
         });
         setMessageList(data);
         console.log("data: ", data);
+      });
+
+      getTotalAmount().then((snapshot) => {
+        setTotalAmount(snapshot.val());
+        console.log("snapshot: ", snapshot);
       });
     } catch (e) {
       console.log(e);
@@ -118,7 +129,8 @@ export const Data = () => {
   const postData = () => {
     try {
       const newData = { color: color.hex, message: input, number: number };
-      postDB(newData);
+      postMessages(newData);
+      putTotalAmount(totalAmount + productList[index].amount);
       getData();
 
       // setColor();
@@ -209,6 +221,7 @@ export const Data = () => {
           color={color}
           showInput={!showArrow}
           setShowModal={setShowModal}
+          totalAmount={totalAmount}
         />
       </div>
 

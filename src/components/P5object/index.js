@@ -70,8 +70,8 @@ export const P5object = ({
     p5.beginShape();
     for (let i = 0; i <= p5.TWO_PI; i += p5.TWO_PI / entitySize) {
       const pointNoiseRaw = p5.noise(
-        p5.cos(i + entityNum) * p5.sin(timer) * mult + 1000,
-        p5.sin(i + entityNum) * p5.cos(timer) * mult + 1000
+        p5.cos(i + entityNum) * p5.sin(timer) * mult + entitySize * 100,
+        p5.sin(i + entityNum) * p5.cos(timer) * mult + entitySize * 100
       );
       const pointNoise = p5.map(pointNoiseRaw, 0, 1, -mult, mult);
       const radius = entitySize + pointNoise;

@@ -20,10 +20,16 @@ firebase.initializeApp(config);
 firebase.analytics();
 database = firebase.database();
 
-export const getDB = () => {
+export const getMessages = () => {
   return database.ref("messages").once("value");
 };
+export const getTotalAmount = () => {
+  return database.ref("total_amount").once("value");
+};
 
-export const postDB = (data) => {
+export const postMessages = (data) => {
   return database.ref("messages").push(data);
+};
+export const putTotalAmount = (data) => {
+  return database.ref("total_amount").set(data);
 };
