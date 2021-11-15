@@ -1,6 +1,6 @@
 {
   "name": "ecoplanet",
-  "homepage": "https://yoojin-kim.github.io/ecoplanet",
+  "homepage": "https://ecoplanet.website/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -26,7 +26,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts ejec",
+    "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
