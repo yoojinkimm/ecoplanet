@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "64af486d55118709a449b06924aa756e",
+    "revision": "9c6ed649a6c1428721eb005ee404ec9a",
     "url": "/ecoplanet/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ecoplanet/static/css/2.982aa7fb.chunk.css"
   },
   {
-    "revision": "7eb1ffafaca12f979c51",
+    "revision": "53c5fffd2fb7a0c0de14",
     "url": "/ecoplanet/static/css/main.3b0b3742.chunk.css"
   },
   {
@@ -24,8 +24,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ecoplanet/static/js/3.bae35aa9.chunk.js"
   },
   {
-    "revision": "7eb1ffafaca12f979c51",
-    "url": "/ecoplanet/static/js/main.d7326860.chunk.js"
+    "revision": "53c5fffd2fb7a0c0de14",
+    "url": "/ecoplanet/static/js/main.21643e8d.chunk.js"
   },
   {
     "revision": "449ef2db1c45065a69a9",

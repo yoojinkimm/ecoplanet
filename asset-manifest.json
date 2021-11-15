@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/ecoplanet/static/css/main.3b0b3742.chunk.css",
-    "main.js": "/ecoplanet/static/js/main.d7326860.chunk.js",
-    "main.js.map": "/ecoplanet/static/js/main.d7326860.chunk.js.map",
+    "main.js": "/ecoplanet/static/js/main.21643e8d.chunk.js",
+    "main.js.map": "/ecoplanet/static/js/main.21643e8d.chunk.js.map",
     "runtime-main.js": "/ecoplanet/static/js/runtime-main.c8f7469d.js",
     "runtime-main.js.map": "/ecoplanet/static/js/runtime-main.c8f7469d.js.map",
     "static/css/2.982aa7fb.chunk.css": "/ecoplanet/static/css/2.982aa7fb.chunk.css",
@@ -11,7 +11,7 @@
     "static/js/3.bae35aa9.chunk.js": "/ecoplanet/static/js/3.bae35aa9.chunk.js",
     "static/js/3.bae35aa9.chunk.js.map": "/ecoplanet/static/js/3.bae35aa9.chunk.js.map",
     "index.html": "/ecoplanet/index.html",
-    "precache-manifest.977cee6e8904755c5352f424918149bb.js": "/ecoplanet/precache-manifest.977cee6e8904755c5352f424918149bb.js",
+    "precache-manifest.074e30d3025371704a6613601387a541.js": "/ecoplanet/precache-manifest.074e30d3025371704a6613601387a541.js",
     "service-worker.js": "/ecoplanet/service-worker.js",
     "static/css/2.982aa7fb.chunk.css.map": "/ecoplanet/static/css/2.982aa7fb.chunk.css.map",
     "static/css/main.3b0b3742.chunk.css.map": "/ecoplanet/static/css/main.3b0b3742.chunk.css.map",
@@ -34,6 +34,6 @@
     "static/css/2.982aa7fb.chunk.css",
     "static/js/2.02ca6698.chunk.js",
     "static/css/main.3b0b3742.chunk.css",
-    "static/js/main.d7326860.chunk.js"
+    "static/js/main.21643e8d.chunk.js"
   ]
 }
