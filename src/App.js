@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <div className="App">
         <header className="App-header"></header>
         <Switch>
