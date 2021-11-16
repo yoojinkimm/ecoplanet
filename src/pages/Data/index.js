@@ -26,6 +26,9 @@ import { PaletteModal } from "./PaletteModal";
 
 export const Data = () => {
   const history = useHistory();
+  const pageRef = useRef([]);
+  const firstRef = useRef(null);
+  const secondRef = useRef(null);
 
   const [index, setIndex] = useState(0);
   const [eSize, setESize] = useState(5);
@@ -42,7 +45,7 @@ export const Data = () => {
   const [showObject, setShowObject] = useState(true);
 
   const width = window.innerWidth;
-  const height = window.innerHeight - 150;
+  const height = window.innerHeight;
 
   const [mouseX, setMouseX] = useState(width / 2);
   const [mouseY, setMouseY] = useState(height / 2);
@@ -65,18 +68,21 @@ export const Data = () => {
           setESize(productList[index]?.amount * 200);
           setShowArrow(true);
           setShowObject(true);
+          if (firstRef.current) firstRef.current.scrollIntoView();
         }
         // 제품을 생산한 기업의 총 탄소배출량
         else if (window.scrollY > height && window.scrollY <= height * 2) {
           setESize(productList[index]?.company_amount / 300);
           setShowArrow(true);
           setShowObject(true);
+          if (secondRef.current) secondRef.current.scrollIntoView();
         }
         // 기업의 원단위 탄소배출량 대비 가격으로 계산한 탄소배출량
         else if (window.scrollY > height * 2 && window.scrollY <= height * 3) {
           setESize(productList[index]?.amount_per_won * 200);
           setShowArrow(true);
           setShowObject(true);
+          // pageRef.current[2].scrollIntoView();
         }
         // 인터랙션 페이지
         else if (
@@ -86,6 +92,7 @@ export const Data = () => {
         ) {
           setShowObject(false);
           setShowArrow(false);
+          // pageRef.current[3].scrollIntoView();
         }
       }, 300),
     []
@@ -198,18 +205,21 @@ export const Data = () => {
           text={"you made"}
           amount={productList[index]?.amount}
           caption={"해당 제품의 탄소배출량"}
+          ref={firstRef}
         />
         <Page
           index={index}
           text={"company made"}
           amount={productList[index]?.company_amount * 1000}
           caption={"제품을 생산한 기업의 총 탄소배출량"}
+          ref={secondRef}
         />
         <Page
           index={index}
           text={"you and company made"}
           amount={productList[index]?.amount_per_won}
           caption={"기업의 원단위 탄소배출량과 제품 가격으로 산출한 탄소배출량"}
+          ref={(el) => (pageRef.current[2] = el)}
         />
         <Interaction
           messageList={messageList}
@@ -222,6 +232,7 @@ export const Data = () => {
           showInput={!showArrow}
           setShowModal={setShowModal}
           totalAmount={totalAmount}
+          ref={(el) => (pageRef.current[3] = el)}
         />
       </div>
 

@@ -14,9 +14,10 @@ export const Interaction = ({
   showInput,
   setShowModal,
   totalAmount,
+  ref,
 }) => {
   return (
-    <div className="data-container act">
+    <div className="data-container act" ref={ref}>
       <div className="fc-white">{totalAmount} kgCO2eq 만큼 모였습니다.</div>
       <div className="memo-list-container">
         {messageList?.map((v, i) => {

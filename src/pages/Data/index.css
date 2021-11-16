@@ -28,6 +28,8 @@
   position: fixed;
   top: 0;
   left: 0;
+  bottom: 0;
+  right: 0;
 }
 .p5-text-container {
   z-index: 10;
@@ -47,6 +49,7 @@
   width: 100%;
   margin-top: 1rem;
   gap: 1rem;
+  border-radius: 0px;
 }
 .data-selector-container {
   width: 100%;
