@@ -81,7 +81,10 @@ export const Home = () => {
               <div style={{ marginLeft: "50%" }} />
               {productList.map((item, index) => {
                 return (
-                  <div ref={(el) => (productRef.current[index] = el)}>
+                  <div
+                    ref={(el) => (productRef.current[index] = el)}
+                    style={{ width: "auto", height: "80%" }}
+                  >
                     <img
                       onClick={() => setSelectedIndex(index)}
                       className="home-product-select pointer"
