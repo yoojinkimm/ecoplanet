@@ -62,7 +62,7 @@ export const Data = () => {
 
   // 제품을 생산한 기업의 총 탄소배출량
   const showSecondPage = () => {
-    setESize(productList[index]?.company_amount / 250);
+    setESize(productList[index]?.company_amount / 200);
     setShowArrow(true);
     setShowObject(true);
   };
