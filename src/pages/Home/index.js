@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./index.css";
 import { Route, Link, useHistory } from "react-router-dom";
 
@@ -13,6 +13,8 @@ import {
 
 export const Home = () => {
   const history = useHistory();
+  const productRef = useRef([]);
+  const imageRef = useRef(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const decreaseIndex = () => {
@@ -24,6 +26,15 @@ export const Home = () => {
     if (selectedIndex === productList.length - 1) setSelectedIndex(0);
     else setSelectedIndex(selectedIndex + 1);
   };
+
+  useEffect(() => {
+    console.log("selected: ", selectedIndex, productRef.current[selectedIndex]);
+    productRef.current[selectedIndex].scrollIntoView({
+      behavior: "smooth",
+      inline: "center",
+    });
+    // if (imageRef) imageRef.current.style.transform = "rotate(180deg)";
+  }, [selectedIndex]);
 
   return (
     <div className="home-background">
@@ -52,10 +63,12 @@ export const Home = () => {
                 onClick={decreaseIndex}
               />
               <div className="home-product-container act jct">
-                <img
-                  className="home-product-icon"
-                  src={productList[selectedIndex].image}
-                />
+                <div ref={imageRef}>
+                  <img
+                    className="home-product-icon"
+                    src={productList[selectedIndex].image}
+                  />
+                </div>
                 <img className="home-basket-icon" src={IconBasket} />
                 <span className="home-product-name fc-white fs-h1 f-bold act jct">
                   {productList[selectedIndex].name}
@@ -68,17 +81,19 @@ export const Home = () => {
               />
             </div>
             <div className="home-bottom-container">
-              <div style={{ marginLeft: "calc(5%" }} />
+              <div style={{ marginLeft: "50%" }} />
               {productList.map((item, index) => {
                 return (
-                  <img
-                    onClick={() => setSelectedIndex(index)}
-                    className="home-product-select pointer"
-                    src={productList[index].image}
-                  />
+                  <div ref={(el) => (productRef.current[index] = el)}>
+                    <img
+                      onClick={() => setSelectedIndex(index)}
+                      className="home-product-select pointer"
+                      src={productList[index].image}
+                    />
+                  </div>
                 );
               })}
-              <div style={{ marginRight: "calc(5%" }} />
+              <div style={{ marginRight: "50%" }} />
             </div>
           </div>
         </section>
