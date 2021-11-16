@@ -29,10 +29,10 @@ export const AllData = () => {
             return (
               <div className="all-item act jct col">
                 <img className="all-product-icon" src={v.image} />
-                <span className="all-product-name fc-white act jct">
+                <span className="all-product-name fc-white act jct f-bold">
                   {v.name}
                 </span>
-                <div className="all-product-badge fc-primary act jct">
+                <div className="all-product-badge fc-primary act jct f-bold">
                   {v.badge}
                 </div>
                 <span className="all-product-caption fc-white act jct">
@@ -53,15 +53,16 @@ export const AllData = () => {
         </div>
 
         <div className="all-explanation-container col">
-          <span className="all-product-caption fc-white">자료 출처</span>
+          <span className="all-product-caption fc-white f-bold">자료 출처</span>
+          <br />
           <a
             style={{ zIndex: 100 }}
             className="pointer"
             href="http://www.me.go.kr/home/web/public_info/read.do;jsessionid=mDrhYq13lP9jbDNNkbhfOjg6EDhqQpukaE7h7rQImkWDfNGg0IG8A0SPHIlQM9Gg.meweb2vhost_servlet_engine1?pagerOffset=40&maxPageItems=10&maxIndexPages=10&searchKey=&searchValue=&menuId=10357&orgCd=&condition.publicInfoMasterId=10&condition.deleteYn=N&publicInfoId=50&menuId=10357"
           >
-            <span className="all-product-caption fc-white">
+            <h2 className="all-product-caption fc-white">
               환경부 환경성적표지인증현황
-            </span>
+            </h2>
           </a>
 
           <a
@@ -69,9 +70,9 @@ export const AllData = () => {
             className="pointer"
             href="http://comp.wisereport.co.kr/company/dart.aspx?cmp_cd=009290&cn="
           >
-            <span className="all-product-caption fc-white">
+            <h2 className="all-product-caption fc-white">
               금융감독원 기업 공시자료
-            </span>
+            </h2>
           </a>
 
           <a
@@ -79,9 +80,9 @@ export const AllData = () => {
             className="pointer"
             href="http://www.gir.go.kr/home/index.do?menuId=37"
           >
-            <span className="all-product-caption fc-white">
+            <h2 className="all-product-caption fc-white">
               환경부 온실가스종합정보센터 온실가스통게
-            </span>
+            </h2>
           </a>
         </div>
       </div>

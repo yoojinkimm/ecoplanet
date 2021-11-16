@@ -53,7 +53,7 @@
 }
 .data-selector-container {
   width: 100%;
-  margin-top: 1rem;
+  /* margin-top: 0.5rem; */
   gap: 1rem;
 }
 .data-message-input {

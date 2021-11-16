@@ -38,7 +38,8 @@
 }
 
 .landing-icon {
-  width: 100px;
+  width: 80px;
+  opacity: 0.8;
 }
 .landing-button-text {
   color: white;

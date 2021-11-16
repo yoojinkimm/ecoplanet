@@ -65,8 +65,15 @@ export const Interaction = ({
   }, [pageRef, options]);
 
   return (
-    <div className="data-container act" ref={pageRef}>
-      <div className="fc-white">{totalAmount} kgCO2eq 만큼 모였습니다.</div>
+    <div
+      className="data-container act"
+      ref={pageRef}
+      style={{ paddingTop: "5rem" }}
+    >
+      <div className="fc-white f-bold">
+        <span className="fc-primary">{totalAmount}</span> kgCO2eq 만큼
+        모였습니다.
+      </div>
       <div className="memo-list-container">
         {messageList?.map((v, i) => {
           return (
@@ -79,17 +86,17 @@ export const Interaction = ({
                 color={v.color}
               />
               {/* <div className="memo-object" /> */}
-              <span className="memo-text fc-white">{v.message}</span>
+              <h1 className="memo-text fc-white" style={{ fontSize: "0.8rem" }}>
+                {v.message}
+              </h1>
             </div>
           );
         })}
       </div>
 
       {showInput && (
-        <div className="col act data-message-container">
-          <span className="fc-primary fs-h1 f-bold wow fadeInUp">
-            힘을 모아
-          </span>
+        <div className="col act jct data-message-container">
+          <h1 className="fc-primary fs-h1 f-bold wow fadeInUp">힘을 모아</h1>
           <div className="row act jct data-selector-container">
             <div
               className="data-color-picker pointer"

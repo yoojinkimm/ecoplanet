@@ -67,7 +67,7 @@ export const Home = () => {
                   />
                 </div>
                 <img className="home-basket-icon" src={IconBasket} />
-                <span className="home-product-name fc-white fs-h1 f-bold act jct">
+                <span className="home-product-name fc-white fs-h1 act jct">
                   {productList[selectedIndex].name}
                 </span>
               </div>
