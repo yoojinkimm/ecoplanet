@@ -55,21 +55,21 @@ export const Data = () => {
 
   // 해당 제품의 탄소배출량
   const showFirstPage = () => {
-    setESize(productList[index]?.amount * 200);
+    setESize(productList[index]?.amount * 100);
     setShowArrow(true);
     setShowObject(true);
   };
 
   // 제품을 생산한 기업의 총 탄소배출량
   const showSecondPage = () => {
-    setESize(productList[index]?.company_amount / 300);
+    setESize(productList[index]?.company_amount / 250);
     setShowArrow(true);
     setShowObject(true);
   };
 
   // 기업의 원단위 탄소배출량 대비 가격으로 계산한 탄소배출량
   const showThirdPage = () => {
-    setESize(productList[index]?.amount_per_won * 200);
+    setESize(productList[index]?.amount_per_won * 100);
     setShowArrow(true);
     setShowObject(true);
   };
@@ -176,7 +176,6 @@ export const Data = () => {
         // style={{ transform: `translate(${objectX / 5}, ${objectY / 5})` }}
       >
         <Page
-          index={index}
           pageIndex={0}
           text={"you made"}
           amount={productList[index]?.amount}
@@ -184,7 +183,6 @@ export const Data = () => {
           show={showFirstPage}
         />
         <Page
-          index={index}
           pageIndex={1}
           text={"company made"}
           amount={productList[index]?.company_amount * 1000}
@@ -192,7 +190,6 @@ export const Data = () => {
           show={showSecondPage}
         />
         <Page
-          index={index}
           pageIndex={2}
           text={"you and company made"}
           amount={productList[index]?.amount_per_won}
