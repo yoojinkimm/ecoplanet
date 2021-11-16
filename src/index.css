@@ -174,14 +174,14 @@ input:focus {
 /* only Tablet */
 @media (max-width: 939.98px) {
   body {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 
 /* only Mobile */
 @media (max-width: 747.98px) {
   body {
-    font-size: 12px;
+    font-size: 16x;
   }
   .home-header-container {
     padding-left: 2rem;

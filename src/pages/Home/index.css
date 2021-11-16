@@ -115,7 +115,7 @@
   .home-product-container {
     height: 70vh;
     width: 100vw;
-    backdrop-filter: blur(7px) saturate(150%);
+    /* backdrop-filter: blur(7px) saturate(150%); */
   }
   .home-product-name {
     top: 30vh;

@@ -6,10 +6,7 @@ import IconBasket from "../../assets/icons/icon_basket.png";
 
 import { productList } from "../../assets/data/product.js";
 import { CircularSelector } from "../../components";
-import {
-  IoIosArrowDropleftCircle,
-  IoIosArrowDroprightCircle,
-} from "react-icons/io";
+import { IoArrowBackOutline, IoArrowForwardOutline } from "react-icons/io5";
 
 export const Home = () => {
   const history = useHistory();
@@ -57,7 +54,7 @@ export const Home = () => {
         <section>
           <div className="home-contents-container">
             <div className="home-top-container act jct">
-              <IoIosArrowDropleftCircle
+              <IoArrowBackOutline
                 className="home-arrow-icon pointer"
                 style={{ left: "1rem" }}
                 onClick={decreaseIndex}
@@ -74,7 +71,7 @@ export const Home = () => {
                   {productList[selectedIndex].name}
                 </span>
               </div>
-              <IoIosArrowDroprightCircle
+              <IoArrowForwardOutline
                 onClick={increaseIndex}
                 className="home-arrow-icon pointer"
                 style={{ right: "1rem" }}
