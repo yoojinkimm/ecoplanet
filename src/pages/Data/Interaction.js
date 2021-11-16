@@ -15,21 +15,39 @@ export const Interaction = ({
   setShowModal,
   totalAmount,
   show,
+  pageIndex,
 }) => {
   const pageRef = useRef(null);
 
+  let prevRatio = 0.0;
+
   const callback = (entries) => {
     const [entry] = entries;
-    if (entry.isIntersecting) {
-      show();
-      // console.log("entries: ", entries);
-      pageRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    // 0.5로 안하면 서로 충돌납니다.
+    if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+      if (entry.intersectionRatio > prevRatio) {
+        // 증가하는 경우
+        console.log(pageIndex, "increase");
+        show();
+        window.scrollTo({
+          top: window.innerHeight * pageIndex,
+          behavior: "smooth",
+          block: "start",
+        });
+        // pageRef.current.scrollIntoView({
+        //   behavior: "smooth",
+        //   block: "start",
+        // });
+      }
     }
+
+    prevRatio = entry.intersectionRatio;
   };
 
   const options = {
     root: null,
-    threshold: 0.6,
+    threshold: [0, 0.25, 0.5, 0.75, 1],
   };
 
   useEffect(() => {

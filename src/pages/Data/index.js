@@ -177,6 +177,7 @@ export const Data = () => {
       >
         <Page
           index={index}
+          pageIndex={0}
           text={"you made"}
           amount={productList[index]?.amount}
           caption={"해당 제품의 탄소배출량"}
@@ -184,6 +185,7 @@ export const Data = () => {
         />
         <Page
           index={index}
+          pageIndex={1}
           text={"company made"}
           amount={productList[index]?.company_amount * 1000}
           caption={"제품을 생산한 기업의 총 탄소배출량"}
@@ -191,6 +193,7 @@ export const Data = () => {
         />
         <Page
           index={index}
+          pageIndex={2}
           text={"you and company made"}
           amount={productList[index]?.amount_per_won}
           caption={"기업의 원단위 탄소배출량과 제품 가격으로 산출한 탄소배출량"}
@@ -208,6 +211,7 @@ export const Data = () => {
           setShowModal={setShowModal}
           totalAmount={totalAmount}
           show={showInteractionPage}
+          pageIndex={3}
         />
       </div>
 

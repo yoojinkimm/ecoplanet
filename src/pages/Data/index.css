@@ -134,7 +134,7 @@
   backdrop-filter: blur(7px);
 }
 .palette-container {
-  background-color: black;
+  /* background-color: black; */
   padding: 3rem 2rem;
   z-index: 400;
 }
