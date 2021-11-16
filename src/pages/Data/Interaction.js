@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, forwardRef, useRef } from "react";
 import { P5object } from "../../components";
 import Slider from "react-rangeslider";
 import "react-rangeslider/lib/index.css";
@@ -14,10 +14,40 @@ export const Interaction = ({
   showInput,
   setShowModal,
   totalAmount,
-  ref,
+  show,
 }) => {
+  const pageRef = useRef(null);
+
+  const callback = (entries) => {
+    const [entry] = entries;
+    if (entry.isIntersecting) {
+      show();
+      // console.log("entries: ", entries);
+      pageRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  const options = {
+    root: null,
+    threshold: 0.6,
+  };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(callback, options);
+
+    if (pageRef.current) {
+      observer.observe(pageRef.current);
+    }
+
+    return () => {
+      if (pageRef.current) {
+        observer.unobserve(pageRef.current);
+      }
+    };
+  }, [pageRef, options]);
+
   return (
-    <div className="data-container act" ref={ref}>
+    <div className="data-container act" ref={pageRef}>
       <div className="fc-white">{totalAmount} kgCO2eq 만큼 모였습니다.</div>
       <div className="memo-list-container">
         {messageList?.map((v, i) => {

@@ -26,9 +26,6 @@ import { PaletteModal } from "./PaletteModal";
 
 export const Data = () => {
   const history = useHistory();
-  const pageRef = useRef([]);
-  const firstRef = useRef(null);
-  const secondRef = useRef(null);
 
   const [index, setIndex] = useState(0);
   const [eSize, setESize] = useState(5);
@@ -56,47 +53,32 @@ export const Data = () => {
 
   const scrollRef = useRef();
 
-  const throttledScroll = useMemo(
-    () =>
-      throttle(() => {
-        // if (!scrollRef.current) return;
-        // console.log("window: ", window.scrollY);
-        // console.log("scrollRef: ", scrollRef.current.scrollHeight;
+  // 해당 제품의 탄소배출량
+  const showFirstPage = () => {
+    setESize(productList[index]?.amount * 200);
+    setShowArrow(true);
+    setShowObject(true);
+  };
 
-        // 해당 제품의 탄소배출량
-        if (window.scrollY <= height) {
-          setESize(productList[index]?.amount * 200);
-          setShowArrow(true);
-          setShowObject(true);
-          if (firstRef.current) firstRef.current.scrollIntoView();
-        }
-        // 제품을 생산한 기업의 총 탄소배출량
-        else if (window.scrollY > height && window.scrollY <= height * 2) {
-          setESize(productList[index]?.company_amount / 300);
-          setShowArrow(true);
-          setShowObject(true);
-          if (secondRef.current) secondRef.current.scrollIntoView();
-        }
-        // 기업의 원단위 탄소배출량 대비 가격으로 계산한 탄소배출량
-        else if (window.scrollY > height * 2 && window.scrollY <= height * 3) {
-          setESize(productList[index]?.amount_per_won * 200);
-          setShowArrow(true);
-          setShowObject(true);
-          // pageRef.current[2].scrollIntoView();
-        }
-        // 인터랙션 페이지
-        else if (
-          window.scrollY > height * 3 &&
-          window.scrollY <=
-            scrollRef?.current?.scrollHeight - window.innerHeight
-        ) {
-          setShowObject(false);
-          setShowArrow(false);
-          // pageRef.current[3].scrollIntoView();
-        }
-      }, 300),
-    []
-  );
+  // 제품을 생산한 기업의 총 탄소배출량
+  const showSecondPage = () => {
+    setESize(productList[index]?.company_amount / 300);
+    setShowArrow(true);
+    setShowObject(true);
+  };
+
+  // 기업의 원단위 탄소배출량 대비 가격으로 계산한 탄소배출량
+  const showThirdPage = () => {
+    setESize(productList[index]?.amount_per_won * 200);
+    setShowArrow(true);
+    setShowObject(true);
+  };
+
+  // 인터랙션 페이지
+  const showInteractionPage = () => {
+    setShowObject(false);
+    setShowArrow(false);
+  };
 
   // const mouseFunc = (e) => {
   //   // 가운데 위치를 중심으로
@@ -150,13 +132,6 @@ export const Data = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", throttledScroll);
-    return () => {
-      window.removeEventListener("scroll", throttledScroll);
-    };
-  }, [throttledScroll]);
-
-  useEffect(() => {
     console.log("selected index: ", history.location.state?.index);
     setIndex(history.location.state?.index);
     getData();
@@ -205,21 +180,21 @@ export const Data = () => {
           text={"you made"}
           amount={productList[index]?.amount}
           caption={"해당 제품의 탄소배출량"}
-          ref={firstRef}
+          show={showFirstPage}
         />
         <Page
           index={index}
           text={"company made"}
           amount={productList[index]?.company_amount * 1000}
           caption={"제품을 생산한 기업의 총 탄소배출량"}
-          ref={secondRef}
+          show={showSecondPage}
         />
         <Page
           index={index}
           text={"you and company made"}
           amount={productList[index]?.amount_per_won}
           caption={"기업의 원단위 탄소배출량과 제품 가격으로 산출한 탄소배출량"}
-          ref={(el) => (pageRef.current[2] = el)}
+          show={showThirdPage}
         />
         <Interaction
           messageList={messageList}
@@ -232,7 +207,7 @@ export const Data = () => {
           showInput={!showArrow}
           setShowModal={setShowModal}
           totalAmount={totalAmount}
-          ref={(el) => (pageRef.current[3] = el)}
+          show={showInteractionPage}
         />
       </div>
 
