@@ -16,19 +16,19 @@
 .home-top-container {
   display: flex;
   width: 100vw;
-  height: 70vh;
+  height: 65vh;
   position: relative;
-  padding-top: 2rem;
+  padding-top: 4rem;
 }
 .home-bottom-container {
   display: flex;
   width: 100vw;
   position: relative;
-  height: 30vh;
+  height: 35vh;
   padding: 2rem 0;
   overflow-x: scroll;
   overflow-y: hidden;
-  gap: 3rem;
+  gap: 4rem;
 
   -ms-overflow-style: none;
 }
@@ -37,7 +37,7 @@
 }
 .home-product-container {
   position: relative;
-  width: 50%;
+  width: 60%;
   height: 600px;
 }
 .home-arrow-icon {
@@ -79,7 +79,7 @@
 }
 .home-product-select {
   width: auto;
-  height: 80%;
+  height: 100%;
   transition: transform 0.2s ease-out;
 }
 

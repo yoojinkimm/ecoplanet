@@ -143,13 +143,13 @@ export const Data = () => {
     setIndex(history.location.state?.index);
     getData();
 
-    window.addEventListener("resize", handleResize);
+    // window.addEventListener("resize", handleResize);
 
     // 동작하지 않습니다! ㅠㅠ
     // window.addEventListener("mousemove", mouseFunc, false);
     // loop();
     return () => {
-      window.removeEventListener("resize", handleResize);
+      // window.removeEventListener("resize", handleResize);
       // window.removeEventListener("mousemove", mouseFunc, false);
     };
   }, []);

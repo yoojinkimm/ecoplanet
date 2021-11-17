@@ -37,7 +37,7 @@ export const Interaction = ({
         });
         // pageRef.current.scrollIntoView({
         //   behavior: "smooth",
-        //   block: "start",
+        //   block: "center",
         // });
       }
     }

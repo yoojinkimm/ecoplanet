@@ -83,7 +83,8 @@ export const Home = () => {
                 return (
                   <div
                     ref={(el) => (productRef.current[index] = el)}
-                    style={{ width: "auto", height: "80%" }}
+                    style={{ width: "100%", height: "100%" }}
+                    className="act jct"
                   >
                     <img
                       onClick={() => setSelectedIndex(index)}

@@ -23,11 +23,11 @@ export const Page = ({ amount, text, caption, show, pageIndex }) => {
         window.scrollTo({
           top: window.innerHeight * pageIndex,
           behavior: "smooth",
-          block: "start",
+          block: "center",
         });
         // pageRef.current.scrollIntoView({
         //   behavior: "smooth",
-        //   block: "start",
+        //   block: "center",
         // });
       }
     }
