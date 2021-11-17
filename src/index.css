@@ -98,6 +98,9 @@ code {
 .f-shadow {
   text-shadow: 1px 1px 5px black;
 }
+.fs-pretendard {
+  font-family: "Pretendard-Thin";
+}
 
 .main {
   /* padding-top: calc(3.75rem + 1px); */

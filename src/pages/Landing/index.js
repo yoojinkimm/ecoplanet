@@ -346,6 +346,28 @@ export const Landing = () => {
               Let's go grocery shopping!
             </a>
           </div>
+
+          <div className="landing-bottom-credit act jct">
+            <span className="fc-white fs-c1 f-bold">
+              Designed by Yoojin Kim, Web Development by Yoojin Kim
+              <br />
+              <pre>
+                <a
+                  href="https://github.com/Yoojin-Kim"
+                  className="fs-pretendard"
+                >
+                  Github
+                </a>
+                {"   "}{" "}
+                <a
+                  href="https://www.linkedin.com/in/%EC%9C%A0%EC%A7%84-%EA%B9%80-5500141b2/"
+                  className="fs-pretendard"
+                >
+                  Linkedin
+                </a>
+              </pre>
+            </span>
+          </div>
         </section>
       </div>
 

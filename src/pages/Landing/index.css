@@ -53,6 +53,14 @@
   transition: transform 0.2s ease-out;
 }
 
+.landing-bottom-credit {
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
 /* only PC */
 @media (min-width: 768px) {
   .landing-header-container {
