@@ -20,11 +20,7 @@ export const Page = ({ amount, text, caption, show, pageIndex }) => {
         // 증가하는 경우
         // console.log(pageIndex, "increase");
         show();
-        window.scrollTo({
-          top: window.innerHeight * pageIndex,
-          behavior: "smooth",
-          block: "center",
-        });
+        window.scrollTo(0, window.innerHeight * pageIndex);
         // pageRef.current.scrollIntoView({
         //   behavior: "smooth",
         //   block: "center",
