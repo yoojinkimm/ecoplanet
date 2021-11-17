@@ -30,11 +30,14 @@ export const Interaction = ({
         // 증가하는 경우
         // console.log(pageIndex, "increase");
         show();
+
+        // 키보드에 입력하면 자꾸 올라가는 버그생김
         // window.scrollTo({
         //   top: window.innerHeight * pageIndex,
         //   behavior: "smooth",
         //   block: "start",
         // });
+
         // pageRef.current.scrollIntoView({
         //   behavior: "smooth",
         //   block: "center",
@@ -47,7 +50,7 @@ export const Interaction = ({
 
   const options = {
     root: null,
-    threshold: [0, 0.25, 0.5, 0.75, 1],
+    threshold: 0.5,
   };
 
   useEffect(() => {

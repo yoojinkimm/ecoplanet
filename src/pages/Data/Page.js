@@ -20,7 +20,13 @@ export const Page = ({ amount, text, caption, show, pageIndex }) => {
         // 증가하는 경우
         // console.log(pageIndex, "increase");
         show();
-        // window.scrollTo(0, window.innerHeight * pageIndex);
+
+        // if (window.innerWidth >= 768)
+        window.scrollTo({
+          top: window.innerHeight * pageIndex,
+          behavior: "smooth",
+          block: "center",
+        });
         // pageRef.current.scrollIntoView({
         //   behavior: "smooth",
         //   block: "center",
@@ -33,7 +39,7 @@ export const Page = ({ amount, text, caption, show, pageIndex }) => {
 
   const options = {
     root: null,
-    threshold: [0, 0.25, 0.5, 0.75, 1],
+    threshold: 0.5,
   };
 
   useEffect(() => {

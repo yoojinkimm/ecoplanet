@@ -7,8 +7,6 @@ export const P5object = ({
   entitySize = 15,
   amountInput = 1,
   color,
-  xPosition,
-  yPosition,
 }) => {
   let timer = 0;
   const speed = 0.001;
@@ -39,7 +37,7 @@ export const P5object = ({
   }
 
   const draw = (p5) => {
-    windowResized();
+    windowResized(p5);
 
     p5.background(0);
     if (color) p5.fill(hexToRgb(color));
@@ -47,8 +45,8 @@ export const P5object = ({
     else p5.fill(148, 251, 86);
 
     // for centered object
-    const xPos = xPosition ?? canvasWidth / 2;
-    const yPos = yPosition ?? canvasHeight / 2;
+    const xPos = canvasWidth / 2;
+    const yPos = canvasHeight / 2;
     let amount = easeInOutQuad(amountInput, 0, 1, 1);
 
     // Draw entity
@@ -93,7 +91,8 @@ export const P5object = ({
   }
 
   function windowResized(p5) {
-    // p5.resizeCanvas(canvasWidth, canvasHeight);
+    p5.resizeCanvas(canvasWidth, canvasHeight);
+    // console.log("window resize: ", canvasWidth, canvasHeight);
   }
 
   return <Sketch setup={setup} draw={draw} />;

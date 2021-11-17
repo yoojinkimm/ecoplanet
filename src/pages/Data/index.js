@@ -41,7 +41,7 @@ export const Data = () => {
   const [showArrow, setShowArrow] = useState(true);
   const [showObject, setShowObject] = useState(true);
 
-  const [width, setWIdth] = useState(window.innerWidth);
+  const [width, setWidth] = useState(window.innerWidth);
   const [height, setHeight] = useState(window.innerHeight);
 
   const [mouseX, setMouseX] = useState(width / 2);
@@ -54,9 +54,10 @@ export const Data = () => {
   const scrollRef = useRef();
 
   const handleResize = () => {
-    console.log("resize prev: ", height);
-    console.log("resize next: ", window.innerHeight);
-    setWIdth(window.innerWidth);
+    // console.log("resize prev: ", height);
+    // console.log("resize next: ", window.innerHeight);
+
+    setWidth(window.innerWidth);
     setHeight(window.innerHeight);
   };
 
@@ -143,13 +144,13 @@ export const Data = () => {
     setIndex(history.location.state?.index);
     getData();
 
-    // window.addEventListener("resize", handleResize);
+    window.addEventListener("resize", handleResize);
 
     // 동작하지 않습니다! ㅠㅠ
     // window.addEventListener("mousemove", mouseFunc, false);
     // loop();
     return () => {
-      // window.removeEventListener("resize", handleResize);
+      window.removeEventListener("resize", handleResize);
       // window.removeEventListener("mousemove", mouseFunc, false);
     };
   }, []);
@@ -180,8 +181,7 @@ export const Data = () => {
             entitySize={eSize}
             amountInput={aInput}
             canvasWidth={width}
-            canvasHeight={height + 200}
-            yPosition={height / 2}
+            canvasHeight={height}
           />
         </div>
       )}
