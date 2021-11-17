@@ -30,11 +30,11 @@ export const Interaction = ({
         // 증가하는 경우
         // console.log(pageIndex, "increase");
         show();
-        window.scrollTo({
-          top: window.innerHeight * pageIndex,
-          behavior: "smooth",
-          block: "start",
-        });
+        // window.scrollTo({
+        //   top: window.innerHeight * pageIndex,
+        //   behavior: "smooth",
+        //   block: "start",
+        // });
         // pageRef.current.scrollIntoView({
         //   behavior: "smooth",
         //   block: "center",
