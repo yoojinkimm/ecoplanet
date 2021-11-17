@@ -7,15 +7,15 @@ export const P5object = ({
   entitySize = 15,
   amountInput = 1,
   color,
+  xPosition,
+  yPosition,
 }) => {
   let timer = 0;
   const speed = 0.001;
 
   // Setup
   const setup = (p5, canvasParentRef) => {
-    p5.createCanvas(canvasWidth + 200, canvasHeight + 200).parent(
-      canvasParentRef
-    );
+    p5.createCanvas(canvasWidth, canvasHeight).parent(canvasParentRef);
     p5.frameRate(30);
   };
 
@@ -39,14 +39,16 @@ export const P5object = ({
   }
 
   const draw = (p5) => {
+    windowResized();
+
     p5.background(0);
     if (color) p5.fill(hexToRgb(color));
     // hex값으로 저장함
     else p5.fill(148, 251, 86);
 
     // for centered object
-    const xPos = canvasWidth / 2;
-    const yPos = canvasHeight / 2;
+    const xPos = xPosition ?? canvasWidth / 2;
+    const yPos = yPosition ?? canvasHeight / 2;
     let amount = easeInOutQuad(amountInput, 0, 1, 1);
 
     // Draw entity
@@ -88,6 +90,10 @@ export const P5object = ({
   function easeInOutQuad(t, b, c, d) {
     if ((t /= d / 2) < 1) return (c / 2) * t * t + b;
     return (-c / 2) * (--t * (t - 2) - 1) + b;
+  }
+
+  function windowResized(p5) {
+    // p5.resizeCanvas(canvasWidth, canvasHeight);
   }
 
   return <Sketch setup={setup} draw={draw} />;

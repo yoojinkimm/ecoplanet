@@ -180,7 +180,8 @@ export const Data = () => {
             entitySize={eSize}
             amountInput={aInput}
             canvasWidth={width}
-            canvasHeight={height}
+            canvasHeight={height + 200}
+            yPosition={height / 2}
           />
         </div>
       )}
