@@ -25,7 +25,7 @@ export const Home = () => {
   };
 
   useEffect(() => {
-    console.log("selected: ", selectedIndex, productRef.current[selectedIndex]);
+    // console.log("selected: ", selectedIndex, productRef.current[selectedIndex]);
     productRef.current[selectedIndex].scrollIntoView({
       behavior: "smooth",
       inline: "center",
@@ -56,7 +56,7 @@ export const Home = () => {
             <div className="home-top-container act jct">
               <IoArrowBackOutline
                 className="home-arrow-icon pointer"
-                style={{ left: "1rem" }}
+                style={{ left: "1rem", zIndex: 100 }}
                 onClick={decreaseIndex}
               />
               <div className="home-product-container act jct">
@@ -74,7 +74,7 @@ export const Home = () => {
               <IoArrowForwardOutline
                 onClick={increaseIndex}
                 className="home-arrow-icon pointer"
-                style={{ right: "1rem" }}
+                style={{ right: "1rem", zIndex: 100 }}
               />
             </div>
             <div className="home-bottom-container">

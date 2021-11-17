@@ -13,7 +13,9 @@ export const P5object = ({
 
   // Setup
   const setup = (p5, canvasParentRef) => {
-    p5.createCanvas(canvasWidth, canvasHeight).parent(canvasParentRef);
+    p5.createCanvas(canvasWidth + 200, canvasHeight + 200).parent(
+      canvasParentRef
+    );
     p5.frameRate(30);
   };
 

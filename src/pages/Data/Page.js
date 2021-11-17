@@ -18,7 +18,7 @@ export const Page = ({ amount, text, caption, show, pageIndex }) => {
     if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
       if (entry.intersectionRatio > prevRatio) {
         // 증가하는 경우
-        console.log(pageIndex, "increase");
+        // console.log(pageIndex, "increase");
         show();
         window.scrollTo({
           top: window.innerHeight * pageIndex,

@@ -41,8 +41,8 @@ export const Data = () => {
   const [showArrow, setShowArrow] = useState(true);
   const [showObject, setShowObject] = useState(true);
 
-  const width = window.innerWidth;
-  const height = window.innerHeight;
+  const [width, setWIdth] = useState(window.innerWidth);
+  const [height, setHeight] = useState(window.innerHeight);
 
   const [mouseX, setMouseX] = useState(width / 2);
   const [mouseY, setMouseY] = useState(height / 2);
@@ -52,6 +52,13 @@ export const Data = () => {
   const slow = 0.005;
 
   const scrollRef = useRef();
+
+  const handleResize = () => {
+    console.log("resize prev: ", height);
+    console.log("resize next: ", window.innerHeight);
+    setWIdth(window.innerWidth);
+    setHeight(window.innerHeight);
+  };
 
   // 해당 제품의 탄소배출량
   const showFirstPage = () => {
@@ -103,15 +110,15 @@ export const Data = () => {
           data.push(snap.val());
         });
         setMessageList(data);
-        console.log("data: ", data);
+        // console.log("data: ", data);
       });
 
       getTotalAmount().then((snapshot) => {
         setTotalAmount(snapshot.val());
-        console.log("snapshot: ", snapshot);
+        // console.log("snapshot: ", snapshot);
       });
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   };
 
@@ -126,26 +133,29 @@ export const Data = () => {
       setNumber(5);
       setInput("");
     } catch (e) {
-      console.log(e);
+      // console.log(e);
       getData();
     }
   };
 
   useEffect(() => {
-    console.log("selected index: ", history.location.state?.index);
+    // console.log("selected index: ", history.location.state?.index);
     setIndex(history.location.state?.index);
     getData();
+
+    window.addEventListener("resize", handleResize);
 
     // 동작하지 않습니다! ㅠㅠ
     // window.addEventListener("mousemove", mouseFunc, false);
     // loop();
     return () => {
+      window.removeEventListener("resize", handleResize);
       // window.removeEventListener("mousemove", mouseFunc, false);
     };
   }, []);
 
   useEffect(() => {
-    console.log("color changed: ", color);
+    // console.log("color changed: ", color);
   }, [color]);
 
   return (
@@ -166,7 +176,12 @@ export const Data = () => {
 
       {showObject && (
         <div className="p5-container">
-          <P5object entitySize={eSize} amountInput={aInput} />
+          <P5object
+            entitySize={eSize}
+            amountInput={aInput}
+            canvasWidth={width}
+            canvasHeight={height}
+          />
         </div>
       )}
       {/* main contents */}

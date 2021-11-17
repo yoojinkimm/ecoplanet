@@ -106,7 +106,7 @@ const Canvas = (props) => {
         heightMap1[i] = Math.floor(normalized * 128);
       }
     }
-    console.log(heightMap1);
+    // console.log(heightMap1);
     setMap1(heightMap1);
     setUpdate(!update);
   };
@@ -137,7 +137,7 @@ const Canvas = (props) => {
         heightMap2[i] = Math.floor(normalized * 127);
       }
     }
-    console.log(heightMap2);
+    // console.log(heightMap2);
     setMap2(heightMap2);
     setUpdate(!update);
   };
@@ -264,9 +264,9 @@ const Canvas = (props) => {
   }, []);
 
   useEffect(() => {
-    console.log("update changed ", update);
+    // console.log("update changed ", update);
     if (image) {
-      console.log("map changed");
+      // console.log("map changed");
 
       updateImageData();
       requestAnimationFrame(tick);
