@@ -74,8 +74,8 @@ export const Interaction = ({
       style={{ paddingTop: "5rem" }}
     >
       <div className="fc-white f-bold">
-        <span className="fc-primary">{totalAmount}</span> kgCO2eq 만큼
-        모였습니다.
+        <span className="fc-primary">{totalAmount.toFixed(3)}</span> kgCO2eq
+        만큼 모였습니다.
       </div>
       <div className="memo-list-container">
         {messageList?.map((v, i) => {
