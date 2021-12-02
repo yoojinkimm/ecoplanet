@@ -123,7 +123,7 @@ export const Interaction = ({
               value={input}
               onChange={(e) => setInput(e.target.value)}
               maxLength={20}
-              placeholder={"남기고 싶은 메세지를 적어주세요."}
+              placeholder={"메시지 없이도 남길 수 있어요."}
               className="data-message-input"
             />
             <button
