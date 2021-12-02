@@ -341,7 +341,10 @@ export const Landing = () => {
       <div className="main">
         <section>
           <div className="landing-contents-container ">
-            <a className="landing-button-text pointer" href="/home">
+            <a
+              className="landing-button-text pointer"
+              onClick={() => history.push("/home")}
+            >
               <img className="landing-icon" src={IconBasket} />
               Let's go grocery shopping!
             </a>
