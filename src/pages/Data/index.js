@@ -238,9 +238,12 @@ export const Data = () => {
             B<br />A<br />C<br />K
           </a>
         </nav>
-        <nav className="footer-right-menu  pointer fc-primary">
-          <a href="/">FINISH</a>
-        </nav>
+
+        {!showArrow && (
+          <nav className="footer-right-menu  pointer fc-primary">
+            <a href="/">FINISH</a>
+          </nav>
+        )}
       </footer>
 
       {showArrow && (

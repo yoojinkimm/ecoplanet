@@ -22,11 +22,11 @@ export const Page = ({ amount, text, caption, show, pageIndex }) => {
         show();
 
         // if (window.innerWidth >= 768)
-        window.scrollTo({
-          top: window.innerHeight * pageIndex,
-          behavior: "smooth",
-          block: "center",
-        });
+        // window.scrollTo({
+        //   top: window.innerHeight * pageIndex,
+        //   behavior: "smooth",
+        //   block: "center",
+        // });
         // pageRef.current.scrollIntoView({
         //   behavior: "smooth",
         //   block: "center",
