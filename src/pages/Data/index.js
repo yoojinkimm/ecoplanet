@@ -4,25 +4,25 @@ import React, {
   useRef,
   useMemo,
   useDebugValue,
-} from "react";
-import "./index.css";
-import { Route, Link, useHistory } from "react-router-dom";
-import { Page } from "./Page";
-import { Interaction } from "./Interaction";
-import { P5object } from "../../components";
-import { throttle } from "lodash";
-import { productList } from "../../assets/data/product";
-import { IoIosArrowDown } from "react-icons/io";
-import WOW from "wowjs";
+} from 'react';
+import './index.css';
+import {Route, Link, useHistory} from 'react-router-dom';
+import {Page} from './Page';
+import {Interaction} from './Interaction';
+import {P5object} from '../../components';
+import {throttle} from 'lodash';
+import {productList} from '../../assets/data/product';
+import {IoIosArrowDown} from 'react-icons/io';
+import WOW from 'wowjs';
 import {
   getMessages,
   postMessages,
   getTotalAmount,
   putTotalAmount,
-} from "../../firebase";
-import { useColor } from "react-color-palette";
+} from '../../firebase';
+import {useColor} from 'react-color-palette';
 
-import { PaletteModal } from "./PaletteModal";
+import {PaletteModal} from './PaletteModal';
 
 export const Data = () => {
   const history = useHistory();
@@ -33,8 +33,8 @@ export const Data = () => {
 
   const [messageList, setMessageList] = useState();
   const [totalAmount, setTotalAmount] = useState(0);
-  const [input, setInput] = useState("");
-  const [color, setColor] = useColor("hex", "#94fb56");
+  const [input, setInput] = useState('');
+  const [color, setColor] = useColor('hex', '#94fb56');
   const [number, setNumber] = useState(5);
   const [showModal, setShowModal] = useState(false);
 
@@ -78,7 +78,7 @@ export const Data = () => {
   // 기업의 원단위 탄소배출량 대비 가격으로 계산한 탄소배출량
   const showThirdPage = () => {
     setESize(productList[index]?.amount_per_won * 100);
-    setShowArrow(true);
+    setShowArrow(false);
     setShowObject(true);
   };
 
@@ -105,16 +105,16 @@ export const Data = () => {
 
   const getData = () => {
     try {
-      getMessages().then((snapshot) => {
+      getMessages().then(snapshot => {
         let data = [];
-        snapshot.forEach((snap) => {
+        snapshot.forEach(snap => {
           data.push(snap.val());
         });
         setMessageList(data);
         // console.log("data: ", data);
       });
 
-      getTotalAmount().then((snapshot) => {
+      getTotalAmount().then(snapshot => {
         setTotalAmount(snapshot.val());
         // console.log("snapshot: ", snapshot);
       });
@@ -125,14 +125,14 @@ export const Data = () => {
 
   const postData = () => {
     try {
-      const newData = { color: color.hex, message: input, number: number };
+      const newData = {color: color.hex, message: input, number: number};
       postMessages(newData);
       putTotalAmount(totalAmount + productList[index].amount);
       getData();
 
       // setColor();
       setNumber(5);
-      setInput("");
+      setInput('');
     } catch (e) {
       // console.log(e);
       getData();
@@ -142,15 +142,15 @@ export const Data = () => {
   useEffect(() => {
     // console.log("selected index: ", history.location.state?.index);
     setIndex(history.location.state?.index);
-    getData();
+    // getData();
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
 
     // 동작하지 않습니다! ㅠㅠ
     // window.addEventListener("mousemove", mouseFunc, false);
     // loop();
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize);
       // window.removeEventListener("mousemove", mouseFunc, false);
     };
   }, []);
@@ -193,26 +193,26 @@ export const Data = () => {
       >
         <Page
           pageIndex={0}
-          text={"you made"}
+          text={'you made'}
           amount={productList[index]?.amount}
-          caption={"해당 제품의 탄소배출량"}
+          caption={'해당 제품의 탄소배출량'}
           show={showFirstPage}
         />
         <Page
           pageIndex={1}
-          text={"company made"}
+          text={'company made'}
           amount={productList[index]?.company_amount * 1000}
-          caption={"제품을 생산한 기업의 총 탄소배출량"}
+          caption={'제품을 생산한 기업의 총 탄소배출량'}
           show={showSecondPage}
         />
         <Page
           pageIndex={2}
-          text={"you and company made"}
+          text={'you and company made'}
           amount={productList[index]?.amount_per_won}
-          caption={"기업의 원단위 탄소배출량과 제품 가격으로 산출한 탄소배출량"}
+          caption={'기업의 원단위 탄소배출량과 제품 가격으로 산출한 탄소배출량'}
           show={showThirdPage}
         />
-        <Interaction
+        {/* <Interaction
           messageList={messageList}
           postData={postData}
           input={input}
@@ -225,15 +225,14 @@ export const Data = () => {
           totalAmount={totalAmount}
           show={showInteractionPage}
           pageIndex={3}
-        />
+        /> */}
       </div>
 
       {/* footer */}
       <footer className="footer-container">
         <nav
           class="pointer fc-primary f-bold footer-left-menu"
-          onClick={() => history.goBack()}
-        >
+          onClick={() => history.goBack()}>
           <a>
             B<br />A<br />C<br />K
           </a>
@@ -241,7 +240,7 @@ export const Data = () => {
 
         {!showArrow && (
           <nav className="footer-right-menu  pointer fc-primary">
-            <a href="/">FINISH</a>
+            <a href="/alldata">FINISH</a>
           </nav>
         )}
       </footer>
