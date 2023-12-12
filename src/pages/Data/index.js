@@ -164,13 +164,13 @@ export const Data = () => {
       {/* header */}
       <header className="header-container">
         <div className="header-inner">
-          <nav>
-            <a class="header-logo pointer fc-primary" href="/">
-              ECO PLANET
-            </a>
+          <nav onClick={() => history.push('/')}>
+            <a class="header-logo pointer fc-primary">ECO PLANET</a>
           </nav>
-          <nav className="header-right-menu  pointer fc-primary">
-            <a href="/alldata">All Data</a>
+          <nav
+            className="header-right-menu  pointer fc-primary"
+            onClick={() => history.push('/alldata')}>
+            <a>All Data</a>
           </nav>
         </div>
       </header>
@@ -239,8 +239,10 @@ export const Data = () => {
         </nav>
 
         {!showArrow && (
-          <nav className="footer-right-menu  pointer fc-primary">
-            <a href="/alldata">FINISH</a>
+          <nav
+            className="footer-right-menu  pointer fc-primary"
+            onClick={() => history.push('/alldata')}>
+            <a>FINISH</a>
           </nav>
         )}
       </footer>

@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
-import "./index.css";
-import { Route, Link, useHistory } from "react-router-dom";
+import React, {useState, useEffect, useRef} from 'react';
+import './index.css';
+import {Route, Link, useHistory} from 'react-router-dom';
 
-import IconBasket from "../../assets/icons/icon_basket.png";
+import IconBasket from '../../assets/icons/icon_basket.png';
 
-import { productList } from "../../assets/data/product.js";
-import { CircularSelector } from "../../components";
-import { IoArrowBackOutline, IoArrowForwardOutline } from "react-icons/io5";
+import {productList} from '../../assets/data/product.js';
+import {CircularSelector} from '../../components';
+import {IoArrowBackOutline, IoArrowForwardOutline} from 'react-icons/io5';
 
 export const Home = () => {
   const history = useHistory();
@@ -27,8 +27,8 @@ export const Home = () => {
   useEffect(() => {
     // console.log("selected: ", selectedIndex, productRef.current[selectedIndex]);
     productRef.current[selectedIndex].scrollIntoView({
-      behavior: "smooth",
-      inline: "center",
+      behavior: 'smooth',
+      inline: 'center',
     });
     // if (imageRef) imageRef.current.style.transform = "rotate(180deg)";
   }, [selectedIndex]);
@@ -38,13 +38,13 @@ export const Home = () => {
       {/* header */}
       <header className="header-container">
         <div className="header-inner">
-          <nav>
-            <a class="header-logo pointer fc-primary" href="/">
-              ECO PLANET
-            </a>
+          <nav onClick={() => history.push('/')}>
+            <a class="header-logo pointer fc-primary">ECO PLANET</a>
           </nav>
-          <nav className="header-right-menu  pointer fc-primary">
-            <a href="/alldata">All Data</a>
+          <nav
+            className="header-right-menu  pointer fc-primary"
+            onClick={() => history.push('/alldata')}>
+            <a>All Data</a>
           </nav>
         </div>
       </header>
@@ -56,7 +56,7 @@ export const Home = () => {
             <div className="home-top-container act jct">
               <IoArrowBackOutline
                 className="home-arrow-icon pointer"
-                style={{ left: "1rem", zIndex: 100 }}
+                style={{left: '1rem', zIndex: 100}}
                 onClick={decreaseIndex}
               />
               <div className="home-product-container act jct">
@@ -74,18 +74,17 @@ export const Home = () => {
               <IoArrowForwardOutline
                 onClick={increaseIndex}
                 className="home-arrow-icon pointer"
-                style={{ right: "1rem", zIndex: 100 }}
+                style={{right: '1rem', zIndex: 100}}
               />
             </div>
             <div className="home-bottom-container">
-              <div style={{ marginLeft: "50%" }} />
+              <div style={{marginLeft: '50%'}} />
               {productList.map((item, index) => {
                 return (
                   <div
-                    ref={(el) => (productRef.current[index] = el)}
-                    style={{ width: "100%", height: "100%" }}
-                    className="act jct"
-                  >
+                    ref={el => (productRef.current[index] = el)}
+                    style={{width: '100%', height: '100%'}}
+                    className="act jct">
                     <img
                       onClick={() => setSelectedIndex(index)}
                       className="home-product-select pointer"
@@ -94,7 +93,7 @@ export const Home = () => {
                   </div>
                 );
               })}
-              <div style={{ marginRight: "50%" }} />
+              <div style={{marginRight: '50%'}} />
             </div>
           </div>
         </section>
@@ -104,23 +103,20 @@ export const Home = () => {
       <footer className="footer-container">
         <nav
           class="pointer fc-primary f-bold footer-left-menu"
-          onClick={() => history.goBack()}
-        >
+          onClick={() => history.goBack()}>
           <a>
             B<br />A<br />C<br />K
           </a>
         </nav>
-        <nav className="footer-right-menu  pointer fc-primary">
-          <a
-            onClick={() =>
-              history.push({
-                pathname: "/data",
-                state: { index: selectedIndex },
-              })
-            }
-          >
-            SELECT
-          </a>
+        <nav
+          className="footer-right-menu  pointer fc-primary"
+          onClick={() =>
+            history.push({
+              pathname: '/data',
+              state: {index: selectedIndex},
+            })
+          }>
+          <a>SELECT</a>
         </nav>
       </footer>
     </div>

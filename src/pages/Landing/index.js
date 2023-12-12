@@ -188,17 +188,6 @@ const Canvas = props => {
     dy2 = Math.floor(
       (((Math.cos(t * -0.0003 - 0.8 + Math.PI) + 1) / 2) * mapSize) / 2,
     );
-
-    // console.log("mouseX mouseY: ", mouseX, mouseY);
-
-    // dx1 = Math.floor(
-    //   (((Math.cos(mouseX * 0.2 + 0.4 + Math.PI) + 1) / 2) * mapSize) / 2
-    // );
-    // dy1 = Math.floor((((Math.cos(mouseY * 0.3 - 0.1) + 1) / 2) * mapSize) / 2);
-    // dx2 = Math.floor((((Math.cos(mouseX * -0.2 + 1.2) + 1) / 2) * mapSize) / 2);
-    // dy2 = Math.floor(
-    //   (((Math.cos(mouseY * -0.3 - 0.8 + Math.PI) + 1) / 2) * mapSize) / 2
-    // );
   };
 
   const tick = time => {
@@ -264,32 +253,11 @@ const Canvas = props => {
   }, []);
 
   useEffect(() => {
-    // console.log("update changed ", update);
     if (image) {
-      // console.log("map changed");
-
       updateImageData();
       requestAnimationFrame(tick);
     }
   }, [update]);
-
-  // mouse interaction을 넣으려는 시도
-  useEffect(() => {
-    //  console.log(canvasRef);
-    //   canvasRef.current.addEventListener("mousemove", (e) =>
-    //     console.log(e.offsetX, e.offsetY)
-    //   );
-    //   return () => {
-    //     canvasRef.current.removeEventListener("mousemove", (e) =>
-    //       console.log(e.offsetX, e.offsetY)
-    //     );
-    //   };
-  }, []);
-
-  //   useEffect(() => {
-  //     mouseX = props.mouseX;
-  //     mouseY = props.mouseY;
-  //   }, [props.mouseX, props.mouseY]);
 
   return (
     <canvas
@@ -304,18 +272,6 @@ const Canvas = props => {
 
 export const Landing = () => {
   const history = useHistory();
-  const [mouseX, setMouseX] = useState(window.innerWidth / 2);
-  const [mouseY, setMouseY] = useState(window.innerHeight / 2);
-
-  /* for mouse effect */
-  const _onMouseMove = e => {
-    // console.log(e.clientY, e.target.offsetTop);
-    // setMouseX(e.clientX);
-    // setMouseY(e.clientY);
-    // setMouseX(e.clientX + e.target.offsetLeft);
-    // if (e.clientY >= e.target.offsetTop) setMouseY(e.clientY);
-    // else setMouseY(e.target.offsetTop);
-  };
 
   return (
     <div className="landing-background" onMouseMove={_onMouseMove}>
@@ -327,14 +283,6 @@ export const Landing = () => {
           }}
         />
       </div>
-      {/* header */}
-      {/* <div className="header-container">
-        <nav>
-          <a className="header-logo fc-primary pointer" href="/">
-            ECO PLANET
-          </a>
-        </nav>
-      </div> */}
 
       {/* main contents */}
       <div className="main">
@@ -369,12 +317,6 @@ export const Landing = () => {
           </div>
         </section>
       </div>
-
-      {/* mouse effect */}
-      {/* <div
-        className="landing-mouse-effect"
-        style={{ top: mouseY + 10, left: mouseX - 50 }}
-      /> */}
     </div>
   );
 };

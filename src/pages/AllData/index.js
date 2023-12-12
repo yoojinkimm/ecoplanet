@@ -12,13 +12,13 @@ export const AllData = () => {
       {/* header */}
       <header className="header-container">
         <div className="header-inner">
-          <nav>
-            <a class="header-logo pointer fc-primary" href="/">
-              ECO PLANET
-            </a>
+          <nav onClick={() => history.push('/')}>
+            <a class="header-logo pointer fc-primary">ECO PLANET</a>
           </nav>
-          <nav className="header-right-menu  pointer fc-primary">
-            <a href="/alldata">All Data</a>
+          <nav
+            className="header-right-menu  pointer fc-primary"
+            onClick={() => history.push('/alldata')}>
+            <a>All Data</a>
           </nav>
         </div>
       </header>
@@ -93,8 +93,10 @@ export const AllData = () => {
             B<br />A<br />C<br />K
           </a>
         </nav>
-        <nav className="footer-right-menu  pointer fc-primary">
-          <a href="/">MAIN</a>
+        <nav
+          className="footer-right-menu  pointer fc-primary"
+          onClick={() => history.push('/')}>
+          <a>MAIN</a>
         </nav>
       </footer>
     </div>
