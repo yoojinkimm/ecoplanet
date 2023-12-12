@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
-import "./index.css";
-import { Route, Link, useHistory } from "react-router-dom";
+import React, {useState, useEffect, useRef} from 'react';
+import './index.css';
+import {Route, Link, useHistory} from 'react-router-dom';
 
-import IconBasket from "../../assets/icons/icon_basket.png";
+import IconBasket from '../../assets/icons/icon_basket.png';
 
 /* canvas 컴포넌트 */
-const Canvas = (props) => {
+const Canvas = props => {
   let canvas = null;
   let context = null;
   let image = null; // image data list
@@ -177,16 +177,16 @@ const Canvas = (props) => {
   };
 
   // adjust height maps offsets
-  const moveHeightMaps = (t) => {
+  const moveHeightMaps = t => {
     // console.log("time: ", t); // 1000 ~ 그 이상
 
     dx1 = Math.floor(
-      (((Math.cos(t * 0.0002 + 0.4 + Math.PI) + 1) / 2) * mapSize) / 2
+      (((Math.cos(t * 0.0002 + 0.4 + Math.PI) + 1) / 2) * mapSize) / 2,
     );
     dy1 = Math.floor((((Math.cos(t * 0.0003 - 0.1) + 1) / 2) * mapSize) / 2);
     dx2 = Math.floor((((Math.cos(t * -0.0002 + 1.2) + 1) / 2) * mapSize) / 2);
     dy2 = Math.floor(
-      (((Math.cos(t * -0.0003 - 0.8 + Math.PI) + 1) / 2) * mapSize) / 2
+      (((Math.cos(t * -0.0003 - 0.8 + Math.PI) + 1) / 2) * mapSize) / 2,
     );
 
     // console.log("mouseX mouseY: ", mouseX, mouseY);
@@ -201,7 +201,7 @@ const Canvas = (props) => {
     // );
   };
 
-  const tick = (time) => {
+  const tick = time => {
     // mouseX = props.mouseX;
     // mouseY = props.mouseY;
 
@@ -241,12 +241,12 @@ const Canvas = (props) => {
     }
     return g;
   };
-  let palette = linearGradient({ r: 148, g: 251, b: 86 }, { r: 0, g: 0, b: 0 });
+  let palette = linearGradient({r: 148, g: 251, b: 86}, {r: 0, g: 0, b: 0});
 
   useEffect(() => {
     // create canvas ref
     canvas = canvasRef.current;
-    context = canvas.getContext("2d");
+    context = canvas.getContext('2d');
 
     canvas.width = imgSize;
     canvas.height = imgSize;
@@ -298,8 +298,7 @@ const Canvas = (props) => {
         padding: 0,
         margin: 0,
         ...props.style,
-      }}
-    ></canvas>
+      }}></canvas>
   );
 };
 
@@ -309,7 +308,7 @@ export const Landing = () => {
   const [mouseY, setMouseY] = useState(window.innerHeight / 2);
 
   /* for mouse effect */
-  const _onMouseMove = (e) => {
+  const _onMouseMove = e => {
     // console.log(e.clientY, e.target.offsetTop);
     // setMouseX(e.clientX);
     // setMouseY(e.clientY);
@@ -323,8 +322,8 @@ export const Landing = () => {
       <div className="landing-fixed-back">
         <Canvas
           style={{
-            width: "100%",
-            height: "100%",
+            width: '100%',
+            height: '100%',
           }}
         />
       </div>
@@ -343,8 +342,7 @@ export const Landing = () => {
           <div className="landing-contents-container ">
             <a
               className="landing-button-text pointer"
-              onClick={() => history.push("/home")}
-            >
+              onClick={() => history.push('/home')}>
               <img className="landing-icon" src={IconBasket} />
               Let's go grocery shopping!
             </a>
@@ -356,16 +354,14 @@ export const Landing = () => {
               <br />
               <pre>
                 <a
-                  href="https://github.com/Yoojin-Kim"
-                  className="fs-pretendard"
-                >
+                  href="https://github.com/yoojinkimm"
+                  className="fs-pretendard">
                   Github
                 </a>
-                {"   "}{" "}
+                {'   '}{' '}
                 <a
                   href="https://www.linkedin.com/in/%EC%9C%A0%EC%A7%84-%EA%B9%80-5500141b2/"
-                  className="fs-pretendard"
-                >
+                  className="fs-pretendard">
                   Linkedin
                 </a>
               </pre>
