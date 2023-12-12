@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ecoplanet/static/css/main.73cbbea6.css",
-    "main.js": "/ecoplanet/static/js/main.c2783831.js",
+    "main.js": "/ecoplanet/static/js/main.e0a66cfa.js",
     "static/js/787.428420dc.chunk.js": "/ecoplanet/static/js/787.428420dc.chunk.js",
     "static/media/스프라이트15.png": "/ecoplanet/static/media/스프라이트15.ee33887eae486c4dea29.png",
     "static/media/백설갈색설탕.png": "/ecoplanet/static/media/백설갈색설탕.8174c60e34aef1363de4.png",
@@ -17,11 +17,11 @@
     "static/media/칠성사이다250.png": "/ecoplanet/static/media/칠성사이다250.28e4cb9ce2732d1b7931.png",
     "index.html": "/ecoplanet/index.html",
     "main.73cbbea6.css.map": "/ecoplanet/static/css/main.73cbbea6.css.map",
-    "main.c2783831.js.map": "/ecoplanet/static/js/main.c2783831.js.map",
+    "main.e0a66cfa.js.map": "/ecoplanet/static/js/main.e0a66cfa.js.map",
     "787.428420dc.chunk.js.map": "/ecoplanet/static/js/787.428420dc.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.73cbbea6.css",
-    "static/js/main.c2783831.js"
+    "static/js/main.e0a66cfa.js"
   ]
 }
