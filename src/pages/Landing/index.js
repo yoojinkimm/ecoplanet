@@ -274,7 +274,7 @@ export const Landing = () => {
   const history = useHistory();
 
   return (
-    <div className="landing-background" onMouseMove={_onMouseMove}>
+    <div className="landing-background">
       <div className="landing-fixed-back">
         <Canvas
           style={{
