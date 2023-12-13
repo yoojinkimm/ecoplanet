@@ -82,47 +82,6 @@ export const Data = () => {
     setShowObject(true);
   };
 
-  // 인터랙션 페이지
-  const showInteractionPage = () => {
-    setShowObject(false);
-    setShowArrow(false);
-  };
-
-  // const mouseFunc = (e) => {
-  //   // 가운데 위치를 중심으로
-  //   setMouseX(e.clientX - window.innerWidth / 2);
-  //   setMouseY(e.clientY - window.innerHeight / 2);
-
-  //   console.log(e.clientX, e.clientY);
-  // };
-
-  // const loop = () => {
-  //   setObjectX(objectX + (mouseX - objectX) * fast);
-  //   setObjectY(objectY + (mouseY - objectY) * fast);
-
-  //   window.requestAnimationFrame(loop);
-  // };
-
-  const getData = () => {
-    try {
-      getMessages().then(snapshot => {
-        let data = [];
-        snapshot.forEach(snap => {
-          data.push(snap.val());
-        });
-        setMessageList(data);
-        // console.log("data: ", data);
-      });
-
-      getTotalAmount().then(snapshot => {
-        setTotalAmount(snapshot.val());
-        // console.log("snapshot: ", snapshot);
-      });
-    } catch (e) {
-      // console.log(e);
-    }
-  };
-
   const postData = () => {
     try {
       const newData = {color: color.hex, message: input, number: number};
@@ -140,24 +99,13 @@ export const Data = () => {
   };
 
   useEffect(() => {
-    // console.log("selected index: ", history.location.state?.index);
     setIndex(history.location.state?.index);
-    // getData();
 
     window.addEventListener('resize', handleResize);
-
-    // 동작하지 않습니다! ㅠㅠ
-    // window.addEventListener("mousemove", mouseFunc, false);
-    // loop();
     return () => {
       window.removeEventListener('resize', handleResize);
-      // window.removeEventListener("mousemove", mouseFunc, false);
     };
   }, []);
-
-  useEffect(() => {
-    // console.log("color changed: ", color);
-  }, [color]);
 
   return (
     <div className="data-background">
@@ -186,11 +134,7 @@ export const Data = () => {
         </div>
       )}
       {/* main contents */}
-      <div
-        className="data-main-container"
-        ref={scrollRef}
-        // style={{ transform: `translate(${objectX / 5}, ${objectY / 5})` }}
-      >
+      <div className="data-main-container" ref={scrollRef}>
         <Page
           pageIndex={0}
           text={'you made'}
@@ -212,20 +156,6 @@ export const Data = () => {
           caption={'기업의 원단위 탄소배출량과 제품 가격으로 산출한 탄소배출량'}
           show={showThirdPage}
         />
-        {/* <Interaction
-          messageList={messageList}
-          postData={postData}
-          input={input}
-          setInput={setInput}
-          number={number}
-          setNumber={setNumber}
-          color={color}
-          showInput={!showArrow}
-          setShowModal={setShowModal}
-          totalAmount={totalAmount}
-          show={showInteractionPage}
-          pageIndex={3}
-        /> */}
       </div>
 
       {/* footer */}
